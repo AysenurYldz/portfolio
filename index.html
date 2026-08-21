@@ -138,8 +138,9 @@ html.cur-lg #cur{width:66px; height:66px; margin:-33px 0 0 -33px; background:var
 
 /* ══ controls ══════════════════════════════════════════════════════════ */
 .ctl{
-  position:fixed; top:1rem; right:1rem; z-index:80;
-  display:flex; gap:.3rem; align-items:center;
+  position:fixed; z-index:80;
+  top:max(1rem, env(safe-area-inset-top)); right:max(1rem, env(safe-area-inset-right));
+  display:flex; gap:.3rem; align-items:center; max-width:calc(100vw - 1.5rem);
   background:var(--glass); border:1px solid var(--glass-line); padding:.28rem;
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   border-radius:999px; box-shadow:var(--shadow);
@@ -188,16 +189,20 @@ html.cur-lg #cur{width:66px; height:66px; margin:-33px 0 0 -33px; background:var
 .hgrid{display:grid; gap:clamp(2.2rem,5vw,3.5rem); align-items:center}
 @media (min-width:1000px){ .hgrid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)} }
 
+/* block-level (not inline-flex) or the headline below would share its line
+   at tablet widths, where both would still fit side by side */
 .eyebrow{
   font-family:var(--f-mono); font-size:.7rem; font-weight:500; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--violet); display:inline-flex; align-items:center; gap:.6rem;
+  text-transform:uppercase; color:var(--violet); display:flex; align-items:center; gap:.6rem;
+  width:max-content; max-width:100%;
   border:1px solid var(--chipline); background:var(--chip); padding:.4rem .8rem; border-radius:999px;
 }
 .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--violet); flex:none; position:relative}
 .eyebrow .dot::after{content:''; position:absolute; inset:-4px; border-radius:50%; border:1px solid var(--violet); animation:ping 2.2s ease-out infinite}
 @keyframes ping{0%{transform:scale(.6); opacity:.9} 70%,100%{transform:scale(1.7); opacity:0}}
 
-.det{position:relative; display:inline-block; padding:.9rem 1.4rem .9rem 0; margin-top:1.6rem}
+/* margin-top clears the .cls badge, which is pulled up out of the box */
+.det{position:relative; display:block; width:fit-content; max-width:100%; padding:.9rem 1.4rem .9rem 0; margin-top:2.9rem}
 .det::before,.det::after{content:''; position:absolute; width:18px; height:18px; border:1.5px solid var(--violet)}
 .det::before{top:0; left:-14px; border-right:0; border-bottom:0}
 .det::after{bottom:0; right:0; border-left:0; border-top:0}
@@ -257,6 +262,7 @@ h1 .ch{display:inline-block; opacity:0; transform:translateY(.5em) rotate(6deg);
   animation:floaty 7s ease-in-out infinite alternate;
 }
 @keyframes floaty{to{transform:translateY(-12px)}}
+.viewport svg{display:block; width:100%; height:auto}
 .viewport .vbar{
   display:flex; align-items:center; justify-content:space-between; gap:.6rem;
   padding:.55rem .8rem; border-bottom:1px solid var(--glass-line);
@@ -309,7 +315,11 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
 
 /* ── card grid ── */
 .grid{display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
-@media (min-width:760px){ .grid.g3{grid-template-columns:repeat(3,1fr)} .grid.g2{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:680px){ .grid.g2,.grid.g3{grid-template-columns:repeat(2,1fr)} }
+/* a 3-card grid at two columns leaves one empty cell showing the divider
+   colour — let the odd last card span the full row instead */
+@media (min-width:680px) and (max-width:1009px){ .grid.g3>:last-child:nth-child(odd){grid-column:1/-1} }
+@media (min-width:1010px){ .grid.g3{grid-template-columns:repeat(3,1fr)} }
 .cell{background:var(--surf); padding:1.75rem 1.55rem; position:relative; overflow:hidden;
   transition:background .3s, transform .35s var(--ease)}
 .cell::before{
@@ -443,6 +453,110 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
   font-family:var(--f-mono); font-size:.62rem; letter-spacing:.14em; color:var(--dim); text-transform:uppercase;
 }
 
+/* ══ mobile menu ═══════════════════════════════════════════════════════ */
+#menu-btn{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3.5px;
+  width:2.15rem; height:2.15rem; padding:0}
+@media (min-width:1280px){ #menu-btn{display:none} }
+#menu-btn i{display:block; width:15px; height:1.5px; background:currentColor; border-radius:2px;
+  transition:transform .32s var(--ease), opacity .22s}
+#menu-btn[aria-expanded="true"]{color:var(--txt)}
+#menu-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+#menu-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+#menu-btn[aria-expanded="true"] i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+#menu{
+  position:fixed; inset:0; z-index:75; overflow-y:auto; overscroll-behavior:contain;
+  background:var(--ink);
+  background:color-mix(in srgb, var(--ink) 93%, transparent);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  padding:5.5rem var(--pad) max(2.5rem, env(safe-area-inset-bottom));
+  display:flex; flex-direction:column; justify-content:center;
+  opacity:0; visibility:hidden; transition:opacity .38s var(--ease), visibility .38s;
+}
+#menu.open{opacity:1; visibility:visible}
+#menu .mnav{display:flex; flex-direction:column}
+#menu a.ml{
+  display:flex; align-items:baseline; gap:.85rem; text-decoration:none; color:var(--txt);
+  font-family:var(--f-disp); font-weight:700; font-size:clamp(1.35rem,6.4vw,2rem); letter-spacing:-.03em;
+  padding-block:.42rem; border-bottom:1px solid var(--line);
+  opacity:0; transform:translateY(16px);
+  transition:opacity .5s var(--ease), transform .5s var(--ease), color .2s, padding-left .25s var(--ease);
+  transition-delay:calc(var(--i,0) * 45ms);
+}
+#menu.open a.ml{opacity:1; transform:none}
+#menu a.ml .n{font-family:var(--f-mono); font-size:.66rem; font-weight:500; letter-spacing:.16em; color:var(--violet)}
+#menu a.ml:hover,#menu a.ml:focus-visible,#menu a.ml.on{color:var(--violet); padding-left:.4rem}
+#menu .mfoot{
+  margin-top:2rem; display:flex; flex-wrap:wrap; gap:.5rem .9rem;
+  font-family:var(--f-mono); font-size:.68rem; letter-spacing:.1em;
+  opacity:0; transform:translateY(16px);
+  transition:opacity .5s var(--ease) .5s, transform .5s var(--ease) .5s;
+}
+#menu.open .mfoot{opacity:1; transform:none}
+#menu .mfoot a{color:var(--muted); text-decoration:none; border-bottom:1px solid var(--chipline); padding-block:.25rem}
+#menu .mfoot a:hover{color:var(--cyan); border-color:var(--cyan)}
+body.locked{overflow:hidden}
+
+/* ══ responsive ════════════════════════════════════════════════════════ */
+/* long unbroken strings (URLs, mono labels) must never widen the page */
+body{overflow-wrap:break-word}
+.hero{min-height:min(100vh,900px)}
+@supports (height:100svh){ .hero{min-height:min(100svh,900px)} }
+
+/* short viewports: don't force a full-height hero the user has to scroll past */
+@media (max-height:620px){ .hero{min-height:0} .hero .wrap{padding-block:6rem 3rem} .scrollcue{display:none} }
+
+@media (max-width:1279px){
+  /* the rail is gone below this width — the menu button replaces it */
+  .ctl{top:max(.75rem, env(safe-area-inset-top)); right:max(.75rem, env(safe-area-inset-right))}
+  .ctl button{min-height:2.5rem}
+}
+/* single-column hero: the console shouldn't stretch the full tablet width */
+@media (max-width:999px){ .viewport{max-width:min(560px,100%)} }
+section[id],footer[id]{scroll-margin-top:1.5rem}
+@media (max-width:719px){
+  body{font-size:1.02rem; line-height:1.68}
+  .hero .wrap{padding-block:6.5rem 3.5rem}
+  .cell{padding:1.45rem 1.25rem}
+  .stage{padding:1.3rem 1.15rem}
+  .way{padding:1.35rem 1.2rem}
+  .now{padding:1.35rem 1.2rem}
+  .note{padding:1.2rem 1.15rem}
+  .head{gap:.75rem; margin-bottom:2rem}
+  .prose{gap:1rem}
+  .metric{padding:.95rem .85rem}
+  .metric .l{font-size:.56rem; letter-spacing:.08em}
+  .lede,.meta,.cta{max-width:none}
+  .cta .btn{flex:1 1 auto; justify-content:center}
+  #contact .links{flex-direction:column; align-items:stretch}
+  #contact .links .btn{justify-content:center; word-break:break-all}
+  .colophon{flex-direction:column; gap:.5rem; text-align:left}
+  .tl{padding-left:1.25rem}
+  .ev::before{left:calc(-1.25rem + 1px)}
+  .ev{padding-bottom:2.1rem}
+  .scrollcue{margin-top:2.2rem}
+}
+@media (max-width:479px){
+  .det{padding-right:.6rem}
+  .det .cls{font-size:.58rem; letter-spacing:.06em}
+  .meta{font-size:.63rem}
+  .chips span{font-size:.68rem; padding:.36rem .65rem}
+  .ticker span{font-size:.66rem; padding-inline:1rem; gap:1rem}
+  .viewport .vfoot{gap:.6rem; font-size:.54rem}
+}
+
+/* touch devices: no hover affordances, bigger tap targets, no tilt */
+@media (hover:none),(pointer:coarse){
+  .cell::before,.cell:hover::after{display:none}
+  .cell:hover,.stage:hover,.way:hover{transform:none}
+  .ctl button{padding:.55rem .85rem}
+  #menu a.ml{padding-block:.6rem}
+  .rail{display:none !important}
+  /* card titles are the primary tap target in a project card */
+  .cell h3 a{display:inline-block; padding-block:.3rem}
+  .now li a,.way p a{padding-block:.25rem; display:inline-block}
+}
+
 /* ══ reduced motion ════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -473,7 +587,30 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
   <button id="en-btn" aria-pressed="true" title="English">EN</button>
   <span class="sep"></span>
   <button id="theme-btn" title="Theme" aria-label="Toggle theme">◐</button>
+  <span class="sep"></span>
+  <button id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Menu"><i></i><i></i><i></i></button>
 </div>
+
+<nav id="menu" aria-label="Menu">
+  <div class="mnav">
+    <a class="ml" href="#about"    style="--i:1"><span class="n">01</span><span class="en">About</span><span class="tr">Hakkımda</span></a>
+    <a class="ml" href="#build"    style="--i:2"><span class="n">02</span><span class="en">What I build</span><span class="tr">Neler geliştiriyorum</span></a>
+    <a class="ml" href="#pipeline" style="--i:3"><span class="n">03</span><span class="en">Pipeline</span><span class="tr">Hat</span></a>
+    <a class="ml" href="#focus"    style="--i:4"><span class="n">04</span><span class="en">Focus</span><span class="tr">Alanlar</span></a>
+    <a class="ml" href="#ways"     style="--i:5"><span class="n">05</span><span class="en">Beyond the model</span><span class="tr">Modelin ötesinde</span></a>
+    <a class="ml" href="#awards"   style="--i:6"><span class="n">06</span><span class="en">Awards</span><span class="tr">Başarılar</span></a>
+    <a class="ml" href="#work"     style="--i:7"><span class="n">07</span><span class="en">Projects</span><span class="tr">Projeler</span></a>
+    <a class="ml" href="#stack"    style="--i:8"><span class="n">08</span><span class="en">Stack</span><span class="tr">Teknoloji</span></a>
+    <a class="ml" href="#path"     style="--i:9"><span class="n">09</span><span class="en">Path</span><span class="tr">Deneyim</span></a>
+    <a class="ml" href="#contact"  style="--i:10"><span class="n">→</span><span class="en">Contact</span><span class="tr">İletişim</span></a>
+  </div>
+  <div class="mfoot">
+    <a href="mailto:aysenur.yildiz.2905@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/aysenuryildizz">LinkedIn</a>
+    <a href="https://github.com/AysenurYldz">GitHub</a>
+    <a href="https://medium.com/@AysenurYldz">Medium</a>
+  </div>
+</nav>
 
 <nav class="rail" aria-label="Sections">
   <a href="#about"><span class="en">About</span><span class="tr">Hakkımda</span></a>
@@ -507,11 +644,12 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
       <p class="lede tr">Hem modeli eğitiyorum <b>hem de</b> ürünü kuruyorum — bir yanda bilgisayarlı görü ve NLP, diğer yanda Next.js ve Flutter ile belediye, spor ve İK platformları.</p>
 
       <div class="meta">
-        <span class="en">AI Team Lead · <b>Birsav Bilişim</b></span>
-        <span class="tr">Yapay Zekâ Ekip Lideri · <b>Birsav Bilişim</b></span>
+        <span class="en">Team Lead · <b>Birsav Bilişim</b></span>
+        <span class="tr">Ekip Lideri · <b>Birsav Bilişim</b></span>
         <span class="en">M.Sc. · <b>Bursa Technical University</b></span>
         <span class="tr">Yüksek Lisans · <b>Bursa Teknik Üniversitesi</b></span>
-        <span>Teknofest 2023 · <b>3<span class="en">rd</span><span class="tr">.</span></b></span>
+        <span class="en">Teknofest 2023 · <b>3rd</b></span>
+        <span class="tr">Teknofest 2023 · <b>3.</b></span>
       </div>
 
       <div class="cta">
@@ -612,12 +750,12 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
     <span class="rule"></span>
   </div>
   <div class="prose en">
-    <p class="st">My specialism is <b>image processing, natural language processing and deep learning</b>: OCR pipelines that read documents, YOLO models that detect objects in real time, chatbots that answer citizens, anomaly detection that catches what a rule never would. I lead the AI team at <b>Birsav Bilişim</b> — planning, technical decisions, client presentations.</p>
+    <p class="st">My specialism is <b>image processing, natural language processing and deep learning</b>: OCR pipelines that read documents, YOLO models that detect objects in real time, chatbots that answer citizens, anomaly detection that catches what a rule never would. I am <b>one of the two team leads at Birsav Bilişim</b> — every project in the company runs through one of us. I lead the AI side across all of them, and take our <b>private-sector projects end to end</b>: planning, technical decisions, client presentations.</p>
     <p class="st">But a real week is wider than the model. A large share of it is straight product engineering: <b>municipal mobile apps, sports and facility systems, HR platforms, community and entrepreneurship sites</b> — <b>Node.js and Next.js</b> on the web, <b>Flutter</b> on iOS and Android. Most of that work has no model in it at all, and I own the whole stack on it.</p>
     <p class="st">I like it that way. Knowing both halves is what lets me take a project from raw data — or from an empty repository — all the way to <em>a screen someone actually opens</em>. Alongside this I am doing my <b>M.Sc. in Computer Engineering at Bursa Technical University</b>, focused on deep learning and computer vision.</p>
   </div>
   <div class="prose tr">
-    <p class="st">Uzmanlık alanım <b>görüntü işleme, doğal dil işleme ve derin öğrenme</b>: belge okuyan OCR boru hatları, gerçek zamanlı nesne tespiti yapan YOLO modelleri, vatandaşa cevap veren chatbot'lar, hiçbir kuralın yakalayamayacağını yakalayan anomali tespiti. <b>Birsav Bilişim</b>'de yapay zekâ ekibini yönetiyorum — planlama, teknik kararlar, müşteri sunumları.</p>
+    <p class="st">Uzmanlık alanım <b>görüntü işleme, doğal dil işleme ve derin öğrenme</b>: belge okuyan OCR boru hatları, gerçek zamanlı nesne tespiti yapan YOLO modelleri, vatandaşa cevap veren chatbot'lar, hiçbir kuralın yakalayamayacağını yakalayan anomali tespiti. <b>Birsav Bilişim'deki iki ekip liderinden biriyim</b> — şirketteki her proje ikimizden birinin üzerinden yürüyor. Projelerin yapay zekâ tarafını ben yönetiyorum, <b>özel sektör projelerini ise uçtan uca</b> üstleniyorum: planlama, teknik kararlar, müşteri sunumları.</p>
     <p class="st">Ama gerçek bir hafta modelden ibaret değil. Önemli bir kısmı doğrudan ürün geliştirme: <b>belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri</b> — web tarafında <b>Node.js ve Next.js</b>, iOS ve Android'de <b>Flutter</b>. Bu işlerin çoğunda hiç model yok ve tüm katmanları ben üstleniyorum.</p>
     <p class="st">Böyle olması hoşuma gidiyor. İki tarafı da bilmek, bir projeyi ham veriden — ya da boş bir repodan — alıp <em>birinin gerçekten açtığı bir ekrana</em> kadar götürmemi sağlıyor. Bunun yanında <b>Bursa Teknik Üniversitesi'nde Bilgisayar Mühendisliği yüksek lisansımı</b> derin öğrenme ve bilgisayarlı görü odağında sürdürüyorum.</p>
   </div>
@@ -644,15 +782,17 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
   <div class="now">
     <div class="nlbl"><span class="en">Right now</span><span class="tr">Şu anda</span></div>
     <ul class="en">
-      <li>Leading the AI team at <b>Birsav Bilişim</b> — OCR document analysis, citizen-facing chatbots, anomaly detection and tracking</li>
-      <li>Technical lead on the AI side of <b>Biryerden</b>, a smart-municipality platform in production</li>
+      <li>One of <b>two team leads at Birsav Bilişim</b> — every project in the company runs through one of us</li>
+      <li>Leading the <b>AI side of all of them</b> — OCR document analysis, citizen-facing chatbots, anomaly detection and tracking — and taking <b>private-sector projects end to end as a full stack developer</b></li>
+      <li>Among the platforms in production: <b>Biryerden</b>, a smart-municipality product</li>
       <li>Researching deep learning and computer vision for my <b>M.Sc. at Bursa Technical University</b></li>
       <li>Writing about AI on <b><a href="https://medium.com/@AysenurYldz">Medium</a></b></li>
       <li>Happy to talk about <b>YOLO in production, OCR pipelines, LSTM sequence models, or serving models with Triton</b></li>
     </ul>
     <ul class="tr">
-      <li><b>Birsav Bilişim</b>'de yapay zekâ ekibini yönetiyorum — OCR belge analizi, vatandaşa yönelik chatbot'lar, anomali tespiti ve takibi</li>
-      <li>Üretimdeki akıllı belediyecilik platformu <b>Biryerden</b>'in yapay zekâ tarafında teknik liderlik yapıyorum</li>
+      <li><b>Birsav Bilişim'deki iki ekip liderinden biriyim</b> — şirketteki her proje ikimizden birinin üzerinden yürüyor</li>
+      <li><b>Hepsinin yapay zekâ tarafını</b> yürütüyorum — OCR belge analizi, vatandaşa yönelik chatbot'lar, anomali tespiti ve takibi — ve <b>özel sektör projelerini full stack geliştirici olarak uçtan uca</b> üstleniyorum</li>
+      <li>Üretimdeki platformlar arasında akıllı belediyecilik ürünü <b>Biryerden</b> de var</li>
       <li><b>Bursa Teknik Üniversitesi</b> yüksek lisansımda derin öğrenme ve bilgisayarlı görü üzerine araştırma yapıyorum</li>
       <li>Yapay zekâ üzerine <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>'da yazıyorum</li>
       <li><b>Üretimde YOLO, OCR boru hatları, Flutter–Node mimarisi veya Triton ile model servisleştirme</b> konularını konuşmaktan keyif alırım</li>
@@ -836,8 +976,8 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
         </svg>
       </div>
       <h3><span class="en">Team leadership</span><span class="tr">Ekip liderliği</span></h3>
-      <p class="en">I lead the AI team at Birsav Bilişim: project planning, task allocation and the technical decisions that the rest of the work rests on.</p>
-      <p class="tr">Birsav Bilişim'de yapay zekâ ekibini yönetiyorum: proje planlama, iş bölümü ve işin geri kalanının üzerine oturduğu teknik kararlar.</p>
+      <p class="en">One of two team leads at Birsav Bilişim — every project in the company runs through one of us. Project planning, task allocation, client presentations, and the technical decisions the rest of the work rests on.</p>
+      <p class="tr">Birsav Bilişim'deki iki ekip liderinden biriyim — şirketteki her proje ikimizden birinin üzerinden yürüyor. Proje planlama, iş bölümü, müşteri sunumları ve işin geri kalanının üzerine oturduğu teknik kararlar.</p>
     </div>
     <div class="way st">
       <div class="wi">
@@ -969,8 +1109,8 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
   </div>
   <div class="note">
     <span class="k"><span class="en">Also in production, outside GitHub</span><span class="tr">GitHub dışında, üretimde</span></span>
-    <p class="en">OCR-based document analysis pipelines, citizen-facing chatbot systems, anomaly detection and tracking solutions, and the AI side of <b>Biryerden</b> — a smart-municipality platform — all built and led at Birsav Bilişim.</p>
-    <p class="tr">OCR tabanlı belge analizi boru hatları, vatandaşa yönelik chatbot sistemleri, anomali tespiti ve takip çözümleri ve akıllı belediyecilik platformu <b>Biryerden</b>'in yapay zekâ tarafı — tümü Birsav Bilişim'de geliştirildi ve teknik liderliği tarafımdan yürütüldü.</p>
+    <p class="en">OCR-based document analysis pipelines, citizen-facing chatbot systems, anomaly detection and tracking solutions, the AI side of every platform we ship — <b>Biryerden</b>, a smart-municipality product, among them — and private-sector projects delivered end to end in Next.js, Node.js and Flutter. All built and led at Birsav Bilişim.</p>
+    <p class="tr">OCR tabanlı belge analizi boru hatları, vatandaşa yönelik chatbot sistemleri, anomali tespiti ve takip çözümleri, yayına aldığımız her platformun yapay zekâ tarafı — akıllı belediyecilik ürünü <b>Biryerden</b> de bunlardan biri — ve Next.js, Node.js ile Flutter'da uçtan uca teslim edilen özel sektör projeleri. Tümü Birsav Bilişim'de geliştirildi ve tarafımdan yürütüldü.</p>
   </div>
 </section>
 
@@ -1016,16 +1156,16 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
   </div>
   <div class="tl">
     <div class="ev st">
-      <div class="yr">2025 — <span class="en">present</span><span class="tr">devam</span></div>
+      <div class="yr"><span class="en">Dec 2025 — present</span><span class="tr">Ara 2025 — devam</span></div>
       <div>
-        <h3><span class="en">AI Engineer &amp; Team Lead</span><span class="tr">Yapay Zekâ Mühendisi &amp; Ekip Lideri</span></h3>
+        <h3><span class="en">Team Lead — AI &amp; Full Stack</span><span class="tr">Ekip Lideri — Yapay Zekâ &amp; Full Stack</span></h3>
         <div class="org">Birsav Bilişim · Bursa</div>
-        <p class="en">Leading the AI team: project planning, task allocation, technical decisions and client presentations. Building OCR and image-processing solutions, chatbot systems and anomaly detection — and, in equal measure, full product delivery in Node.js, Next.js and Flutter: municipal mobile apps, sports and facility systems, HR platforms, community and entrepreneurship sites. Technical lead on the AI side of the <b>Biryerden</b> smart-municipality platform.</p>
-        <p class="tr">Yapay zekâ ekibinin liderliği: proje planlama, iş bölümü, teknik kararlar ve müşteri sunumları. OCR ve görüntü işleme çözümleri, chatbot sistemleri ve anomali tespiti geliştirme — ve aynı ölçüde Node.js, Next.js ve Flutter ile uçtan uca ürün teslimi: belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri. <b>Biryerden</b> akıllı belediyecilik platformunun yapay zekâ tarafında teknik liderlik.</p>
+        <p class="en">One of <b>two team leads</b> in the company — every project runs through one of us: project planning, task allocation, technical decisions and client presentations. I lead the <b>AI side across all of our projects</b> — OCR and image processing, chatbot systems, anomaly detection — and, in equal measure, take <b>private-sector projects end to end as a full stack developer</b> in Node.js, Next.js and Flutter: municipal mobile apps, sports and facility systems, HR platforms, community and entrepreneurship sites. <b>Biryerden</b>, a smart-municipality product, is one of the platforms in production.</p>
+        <p class="tr">Şirketteki <b>iki ekip liderinden biriyim</b> — her proje ikimizden birinin üzerinden yürüyor: proje planlama, iş bölümü, teknik kararlar ve müşteri sunumları. <b>Tüm projelerimizin yapay zekâ tarafını</b> ben yürütüyorum — OCR ve görüntü işleme, chatbot sistemleri, anomali tespiti — ve aynı ölçüde <b>özel sektör projelerini full stack geliştirici olarak uçtan uca</b> üstleniyorum: Node.js, Next.js ve Flutter ile belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri. Akıllı belediyecilik ürünü <b>Biryerden</b> üretimdeki platformlardan biri.</p>
       </div>
     </div>
     <div class="ev st">
-      <div class="yr">2025 — <span class="en">present</span><span class="tr">devam</span></div>
+      <div class="yr"><span class="en">Feb 2025 — present</span><span class="tr">Şub 2025 — devam</span></div>
       <div>
         <h3><span class="en">M.Sc. Computer Engineering</span><span class="tr">Bilgisayar Mühendisliği, Yüksek Lisans</span></h3>
         <div class="org">Bursa Technical University</div>
@@ -1034,7 +1174,7 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
       </div>
     </div>
     <div class="ev st">
-      <div class="yr">2024 — 2025</div>
+      <div class="yr"><span class="en">Oct 2024 — Jan 2025</span><span class="tr">Eki 2024 — Oca 2025</span></div>
       <div>
         <h3><span class="en">SEO Engineer</span><span class="tr">SEO Mühendisi</span></h3>
         <div class="org">Gini Talent · <span class="en">Remote</span><span class="tr">Uzaktan</span></div>
@@ -1043,7 +1183,7 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
       </div>
     </div>
     <div class="ev st">
-      <div class="yr">2024</div>
+      <div class="yr"><span class="en">Feb — Jun 2024</span><span class="tr">Şub — Haz 2024</span></div>
       <div>
         <h3><span class="en">In-company vocational training, AI</span><span class="tr">İşletmede Mesleki Eğitim, Yapay Zekâ</span></h3>
         <div class="org"><span class="en">Özdilek Ev Tekstil, R&amp;D · Bursa</span><span class="tr">Özdilek Ev Tekstil, Ar-Ge · Bursa</span></div>
@@ -1052,12 +1192,30 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
       </div>
     </div>
     <div class="ev st">
-      <div class="yr">2020 — 2024</div>
+      <div class="yr"><span class="en">Jan — Feb 2024</span><span class="tr">Oca — Şub 2024</span></div>
+      <div>
+        <h3><span class="en">Intern Engineer</span><span class="tr">Stajyer Mühendis</span></h3>
+        <div class="org"><span class="en">Martur Fompak International, IT · Bursa</span><span class="tr">Martur Fompak International, BT · Bursa</span></div>
+        <p class="en">Contributed to an internal web application in Python and Flask, and supported business processes with data analysis and modelling.</p>
+        <p class="tr">Python ve Flask ile geliştirilen bir iç kullanım web uygulamasına katkı verdim; veri analizi ve modelleme çalışmalarıyla iş süreçlerini destekledim.</p>
+      </div>
+    </div>
+    <div class="ev st">
+      <div class="yr"><span class="en">Aug — Sep 2022</span><span class="tr">Ağu — Eyl 2022</span></div>
+      <div>
+        <h3><span class="en">Intern Engineer</span><span class="tr">Stajyer Mühendis</span></h3>
+        <div class="org"><span class="en">Novelty AI Technologies · Kocaeli</span><span class="tr">Novelty Yapay Zekâ Teknolojileri · Kocaeli</span></div>
+        <p class="en">Hands-on work on machine learning, deep learning and image processing projects, and a part in preparing AI training material.</p>
+        <p class="tr">Makine öğrenmesi, derin öğrenme ve görüntü işleme projelerinde uygulamalı çalışmalar yaptım; yapay zekâ eğitim materyallerinin hazırlanmasında görev aldım.</p>
+      </div>
+    </div>
+    <div class="ev st">
+      <div class="yr"><span class="en">Sep 2020 — Sep 2024</span><span class="tr">Eyl 2020 — Eyl 2024</span></div>
       <div>
         <h3><span class="en">B.Sc. Computer Engineering</span><span class="tr">Bilgisayar Mühendisliği, Lisans</span></h3>
-        <div class="org"><span class="en">Sakarya University of Applied Sciences</span><span class="tr">Sakarya Uygulamalı Bilimler Üniversitesi</span></div>
-        <p class="en">Undergraduate thesis on sign language recognition, funded by TÜBİTAK 2209-A. Internships at Martur Fompak International (Python/Flask internal web app, 2024) and Novelty AI Technologies (ML and computer vision, 2022).</p>
-        <p class="tr">TÜBİTAK 2209-A desteğiyle işaret dili tanıma üzerine bitirme tezi. Martur Fompak International (Python/Flask ile iç web uygulaması, 2024) ve Novelty Yapay Zekâ Teknolojileri (makine öğrenmesi ve bilgisayarlı görü, 2022) stajları.</p>
+        <div class="org"><span class="en">Sakarya University of Applied Sciences, Faculty of Technology</span><span class="tr">Sakarya Uygulamalı Bilimler Üniversitesi, Teknoloji Fakültesi</span></div>
+        <p class="en">Undergraduate thesis on sign language recognition, carried out with TÜBİTAK 2209-A funding.</p>
+        <p class="tr">Bitirme tezimi TÜBİTAK 2209-A desteğiyle işaret dili tanıma üzerine tamamladım.</p>
       </div>
     </div>
   </div>
@@ -1161,6 +1319,18 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
     pal = palette();
   });
 
+  /* ── mobile menu ─────────────────────────────────────────────────── */
+  var mBtn = document.getElementById('menu-btn'), menu = document.getElementById('menu');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    mBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('locked', open);
+  }
+  mBtn.addEventListener('click', function(){ setMenu(mBtn.getAttribute('aria-expanded') !== 'true'); });
+  menu.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', function(){ if (window.innerWidth >= 1280) setMenu(false); });
+
   /* ── scroll progress ─────────────────────────────────────────────── */
   var prog = document.getElementById('prog'), ticking = false;
   function onScroll(){
@@ -1225,7 +1395,7 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
   }
 
   /* ── rail active state ───────────────────────────────────────────── */
-  var rail = document.querySelectorAll('.rail a');
+  var rail = document.querySelectorAll('.rail a, #menu a.ml');
   var spy = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (!e.isIntersecting) return;
