@@ -57,6 +57,15 @@
   --shadow:0 24px 60px -28px rgba(0,0,0,.8);
 }
 
+/* iki yana yaslı */
+.prose p, .ev p, footer p, .now li, .seams p{
+  text-align:justify; text-justify:inter-word; hyphens:auto;
+}
+@media (max-width:640px){
+  /* dar ekranda yaslama kelime araları açıyor */
+  .prose p, .ev p, footer p, .now li, .seams p{ text-align:left; hyphens:manual }
+}
+
 /* ══ base ══════════════════════════════════════════════════════════════ */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
