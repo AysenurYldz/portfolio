@@ -57,13 +57,21 @@
   --shadow:0 24px 60px -28px rgba(0,0,0,.8);
 }
 
-/* iki yana yaslı */
-.prose p, .ev p, footer p, .now li, .seams p{
-  text-align:justify; text-justify:inter-word; hyphens:auto;
-}
-@media (max-width:640px){
-  /* dar ekranda yaslama kelime araları açıyor */
-  .prose p, .ev p, footer p, .now li, .seams p{ text-align:left; hyphens:manual }
+/* İki yana yaslı gövde metni. Mono etiketler, rozetler, künye ve boru
+   hattı anahtar kelimeleri hariç — onlar zaten tek satırlık. hyphens:auto
+   dar sütunlarda kelime aralarının açılmasını engelliyor. */
+.lede,
+.prose p,
+.now .nowtext p,
+.cell p,
+.way p,
+.ev p,
+.note p,
+.seams p,
+#contact > .wrap > p{
+  text-align:justify;
+  text-align-last:start;
+  hyphens:auto; -webkit-hyphens:auto;
 }
 
 /* ══ base ══════════════════════════════════════════════════════════════ */
@@ -196,6 +204,9 @@ html.cur-lg #cur{width:66px; height:66px; margin:-33px 0 0 -33px; background:var
 }
 .hero .wrap{z-index:3; width:100%; padding-block:7.5rem 4.5rem}
 .hgrid{display:grid; gap:clamp(2.2rem,5vw,3.5rem); align-items:center}
+/* grid items default to min-width:auto and refuse to shrink below their
+   content — the usual cause of a page that scrolls sideways on phones */
+.hgrid>*,.flow>*,.grid>*,.ways>*,.metrics>*,.srow>*,.ev>*{min-width:0}
 @media (min-width:1000px){ .hgrid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)} }
 
 /* block-level (not inline-flex) or the headline below would share its line
@@ -203,7 +214,10 @@ html.cur-lg #cur{width:66px; height:66px; margin:-33px 0 0 -33px; background:var
 .eyebrow{
   font-family:var(--f-mono); font-size:.7rem; font-weight:500; letter-spacing:.2em;
   text-transform:uppercase; color:var(--violet); display:flex; align-items:center; gap:.6rem;
-  width:max-content; max-width:100%;
+  /* fit-content, not max-content: an element sized to max-content reports
+     its full single-line width as its *min-content contribution*, which
+     floored the hero grid column at ~386px and made phones scroll sideways. */
+  width:fit-content; max-width:100%;
   border:1px solid var(--chipline); background:var(--chip); padding:.4rem .8rem; border-radius:999px;
 }
 .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--violet); flex:none; position:relative}
@@ -303,7 +317,9 @@ h1 .ch{display:inline-block; opacity:0; transform:translateY(.5em) rotate(6deg);
 /* ══ sections ══════════════════════════════════════════════════════════ */
 section{padding-block:clamp(4rem,9vw,7rem); position:relative}
 .head{display:flex; align-items:center; gap:1rem; margin-bottom:2.6rem}
-.head h2{font-size:clamp(1.45rem,3.5vw,2.2rem); font-weight:700; flex:none}
+/* must be allowed to shrink and wrap — flex:none pinned the row to the
+   longest heading and pushed narrow phones into horizontal scroll */
+.head h2{font-size:clamp(1.45rem,3.5vw,2.2rem); font-weight:700; flex:0 1 auto; min-width:0}
 .head .rule{height:1px; background:linear-gradient(90deg,var(--line),transparent); flex:1}
 .head .idx{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.14em; color:var(--violet); flex:none}
 
@@ -1050,7 +1066,7 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <div class="sub">Teknofest 2023 · <span class="en">3rd in Türkiye</span><span class="tr">Türkiye 3.'sü</span></div>
       <h3><span class="en">AI in Transportation</span><span class="tr">Ulaşımda Yapay Zekâ</span></h3>
       <p class="en">I served as <b>team captain of ForesighTech</b>. We developed a YOLO-based system that detects safe landing zones for UAVs in real time and tells people, animals and ground vehicles apart in the landing area instantly. As team captain I managed project planning and task allocation, and I also carried out the training and optimisation of the YOLO architecture myself.</p>
-      <p class="tr"><b>ForesighTech takımının kaptanı olarak görev aldım. İHA'ların güvenli iniş alanlarını gerçek zamanlı tespit eden; iniş bölgesindeki insan, hayvan ve kara taşıtlarını anlık ayırt edebilen YOLO tabanlı bir sistem geliştirdik. Takım kaptanı olarak proje planlaması ve iş bölümü süreçlerini yönetirken, YOLO mimarisinin eğitimini ve optimizasyonunu da bizzat gerçekleştirdim.</p>
+      <p class="tr"><b>ForesighTech takımının kaptanı olarak görev aldım.</b> İHA'ların güvenli iniş alanlarını gerçek zamanlı tespit eden; iniş bölgesindeki insan, hayvan ve kara taşıtlarını anlık ayırt edebilen YOLO tabanlı bir sistem geliştirdik. Takım kaptanı olarak proje planlaması ve iş bölümü süreçlerini yönetirken, YOLO mimarisinin eğitimini ve optimizasyonunu da bizzat gerçekleştirdim.</p>
     </div>
     <div class="cell award st tilt">
       <div class="rank">2209<span style="font-size:.5em">-A</span></div>
