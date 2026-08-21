@@ -320,6 +320,8 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
    colour — let the odd last card span the full row instead */
 @media (min-width:680px) and (max-width:1009px){ .grid.g3>:last-child:nth-child(odd){grid-column:1/-1} }
 @media (min-width:1010px){ .grid.g3{grid-template-columns:repeat(3,1fr)} }
+/* an odd card count in a two-column grid would leave a divider-coloured gap */
+@media (min-width:680px){ .grid.g2>:last-child:nth-child(odd){grid-column:1/-1} }
 .cell{background:var(--surf); padding:1.75rem 1.55rem; position:relative; overflow:hidden;
   transition:background .3s, transform .35s var(--ease)}
 .cell::before{
@@ -355,6 +357,12 @@ section{padding-block:clamp(4rem,9vw,7rem); position:relative}
 .now li b{color:var(--txt); font-weight:600}
 .now li a{color:var(--violet); text-decoration:none; border-bottom:1px solid var(--chipline)}
 .now li a:hover{color:var(--cyan); border-color:var(--cyan)}
+/* .nowtext must not carry a display value — the language toggle only hides */
+.now .nowtext p{color:var(--muted); font-size:.96rem; line-height:1.7}
+.now .nowtext p + p{margin-top:.9rem}
+.now .nowtext b{color:var(--txt); font-weight:600}
+.now .nowtext a{color:var(--violet); text-decoration:none; border-bottom:1px solid var(--chipline)}
+.now .nowtext a:hover{color:var(--cyan); border-color:var(--cyan)}
 
 /* ── pipeline ── */
 .flow{display:grid; gap:1.5rem; position:relative}
@@ -648,8 +656,8 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <p class="role"><span class="v"><span class="en">AI Engineer</span><span class="tr">Yapay Zekâ Mühendisi</span></span><span class="slash">/</span><span class="b"><span class="en">Full Stack Developer</span><span class="tr">Full Stack Geliştirici</span></span></p>
       <p class="typer mono"><span id="typed"></span><span class="caret"></span></p>
 
-      <p class="lede en">I develop <b>computer vision, OCR and NLP</b> models. I also take an active role in software development for public sector and municipal projects, using <b>Next.js, Node.js and Flutter</b>.</p>
-      <p class="lede tr"><b>Bilgisayarlı görü, OCR ve NLP</b> üzerine modeller geliştiriyorum. Ayrıca <b>Next.js, Node.js ve Flutter</b> teknolojilerini kullanarak kamu ve belediyeler için yazılım geliştirme süreçlerinde aktif rol alıyorum.</p>
+      <p class="lede en">Hello, I am Ayşenur Yıldız. I am an AI and computer engineer specialising in <b>image processing, natural language processing and deep learning</b>. Across the whole product life cycle — from the idea stage to the moment a project reaches its end user — I take responsibility as a <b>team lead</b> and play an active part in the development work myself.</p>
+      <p class="lede tr">Merhaba, ben Ayşenur Yıldız. <b>Görüntü işleme, doğal dil işleme ve derin öğrenme</b> alanlarında uzmanlaşmış bir Yapay Zekâ ve Bilgisayar Mühendisiyim. Projelerin fikir aşamasından son kullanıcıya ulaştığı ana kadar olan ürün yaşam döngüsünde <b>ekip lideri</b> olarak sorumluluk alıyor ve bizzat geliştirme süreçlerinde aktif rol oynuyorum.</p>
 
       <div class="meta">
         <span class="en">Team Lead · <b>Birsav Bilişim</b></span>
@@ -758,16 +766,14 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
     <span class="rule"></span>
   </div>
   <div class="prose en">
-    <p class="st">I work in the fields of <b>image processing, natural language processing and deep learning</b>. I develop OCR systems that read documents, YOLO models that perform real-time object detection, chatbot applications that answer citizens' questions, and anomaly detection systems that identify deviations rule-based methods cannot catch.</p>
-    <p class="st">I serve as <b>one of two team leads at Birsav Bilişim</b>. Every project in the company proceeds under the responsibility of one of us, and project planning, technical decisions and client presentations are among the processes I run. I manage the <b>AI side of all our projects</b> and build the <b>private- and public-sector projects from start to finish</b>.</p>
-    <p class="st">Not all of my work is AI-focused. I also develop <b>municipal mobile applications, sports and facility management systems, human resources platforms, and community and entrepreneurship sites</b>. I use <b>Node.js and Next.js</b> on the web and <b>Flutter</b> on iOS and Android. Most of these projects involve no model at all, and I write every layer of them myself.</p>
-    <p class="st">Working in both areas is a deliberate choice. It allows me to take a project from raw data, or from nothing at all, through to <em>the screen a user opens</em>. Alongside this I am continuing my <b>M.Sc. in Computer Engineering at Bursa Technical University</b>, with a focus on deep learning and computer vision.</p>
+    <p class="st">I am continuing my <b>M.Sc. at Bursa Technical University</b> while working at <b>Birsav Bilişim</b>, where I am <b>one of two team leads</b> in the company. I lead projects on both the artificial intelligence side and the private-sector side. Project planning, task allocation, technical decisions, client presentations and the AI processes are all run by me personally.</p>
+    <p class="st">On <b>private- and public-sector projects</b> I work as a full stack developer, building them from start to finish. With <b>Node.js, Next.js and Flutter</b> I have worked on municipal mobile applications, sports and facility systems, HR platforms, and community and entrepreneurship sites. I take an active part in smart-municipality systems, and in the <b>Biryerden</b> platform in particular. Alongside this I manage AI solutions end to end, including OCR-based document analysis, anomaly detection and chatbot systems.</p>
+    <p class="st">My earlier professional experience includes working as an <b>SEO Engineer at Gini Talent</b>, where I developed content strategies based on search-volume and competition analysis. I also worked in the <b>R&amp;D department at Özdilek</b> on deep learning and image processing projects for the textile industry, taking part in every stage from data labelling through to turning trained models into services with Docker. Through my internships at <b>Martur Fompak</b> and <b>Novelty Yapay Zekâ</b> I strengthened my practical skills in data analysis, machine learning and web application development.</p>
   </div>
   <div class="prose tr">
-    <p class="st"><b>Görüntü işleme, doğal dil işleme ve derin öğrenme</b> alanlarında çalışıyorum. Belge okuyan OCR sistemleri, gerçek zamanlı nesne tespiti yapan YOLO modelleri, vatandaşların sorularını yanıtlayan chatbot uygulamaları ve kural tabanlı yöntemlerle yakalanamayan sapmaları tespit eden anomali sistemleri geliştiriyorum.</p>
-    <p class="st"><b>Birsav Bilişim'de iki ekip liderinden biri olarak görev yapıyorum.</b> Şirketteki her proje ikimizden birinin sorumluluğunda ilerliyor; proje planlaması, teknik kararlar ve müşteri sunumları benim yürüttüğüm süreçler arasında yer alıyor. <b>Projelerimizin yapay zekâ tarafını</b> yönetiyor, <b>özel sektör ve kamu projelerinde</b> ise <b>baştan sona</b> geliştirme yapıyorum.</p>
-    <p class="st">Çalışmalarımın tamamı yapay zekâ odaklı değil. <b>Belediye mobil uygulamaları, spor ve tesis yönetim sistemleri, insan kaynakları platformları ile topluluk ve girişim siteleri</b> de geliştiriyorum. Web tarafında <b>Node.js ve Next.js</b>, mobil tarafta ise <b>Flutter</b> teknolojilerini kullanıyorum. Bu projelerin büyük bölümünde model yer almıyor ve tüm katmanlarını kendim yazıyorum.</p>
-    <p class="st">Her iki alanda da çalışmak bilinçli bir tercih. Bu sayede bir projeyi ham veriden ya da sıfırdan alıp <em>kullanıcının karşısına çıkan ekrana</em> kadar götürebiliyorum. Bunun yanında <b>Bursa Teknik Üniversitesi'nde Bilgisayar Mühendisliği yüksek lisansımı</b> sürdürüyor, derin öğrenme ve bilgisayarlı görü üzerine çalışmalar yapıyorum.</p>
+    <p class="st"><b>Bursa Teknik Üniversitesi</b>'nde yüksek lisans eğitimime devam etmekte olup, eş zamanlı olarak <b>Birsav Bilişim</b>'de çalışmalarımı sürdürüyorum. Birsav Bilişim'de şirketteki <b>iki ekip liderinden biri</b> olarak görev yapmaktayım. Hem yapay zekâ tarafında hem de özel sektör tarafında liderlik görevini üstlendiğim projelerim mevcut. Projelerin planlaması, iş bölümü, teknik kararları, müşteri sunumları ve yapay zekâ süreçlerini bizzat yürütmekteyim.</p>
+    <p class="st"><b>Özel sektör ve kamu projelerinde</b> ise full stack geliştirici olarak baştan sona geliştirmeler yapıyorum. <b>Node.js, Next.js ve Flutter</b> ile belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri üzerine çalışmalarım bulunuyor. Akıllı belediyecilik sistemlerinde, özellikle <b>Biryerden</b> platformunda aktif olarak çalıştığım bölümler mevcut. Bununla birlikte OCR tabanlı belge analizi, anomali tespiti ve chatbot sistemleri gibi yapay zekâ çözümlerini de uçtan uca yönetiyorum.</p>
+    <p class="st">Önceki profesyonel deneyimlerim arasında, <b>Gini Talent</b> bünyesinde SEO Mühendisi olarak görev aldığım ve arama hacmi ile rekabet analizlerine dayalı içerik stratejileri geliştirdiğim çalışmalarım yer almaktadır. Ayrıca <b>Özdilek Ar-Ge</b> departmanında tekstil sektörüne yönelik derin öğrenme ve görüntü işleme projelerinde bulundum; burada veri etiketleme süreçlerinden, eğitilen modellerin Docker ile servisleştirilmesine kadar olan aşamalarda görev aldım. <b>Martur Fompak</b> ve <b>Novelty Yapay Zekâ</b>'da gerçekleştirdiğim stajlar ile de veri analizi, makine öğrenmesi ve web uygulamaları geliştirme konularındaki pratik yetkinliklerimi pekiştirdim.</p>
   </div>
 
   <div class="metrics">
@@ -791,24 +797,16 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
 
   <div class="now">
     <div class="nlbl"><span class="en">Right now</span><span class="tr">Şu anda</span></div>
-    <ul class="en">
-      <li>I am one of <b>two team leads at Birsav Bilişim</b>; project planning, task allocation, technical decisions and client presentations are processes I run</li>
-      <li>I manage the <b>AI side of our projects</b>: OCR document analysis, citizen-facing chatbot systems, anomaly detection and tracking</li>
-      <li>I build the <b>private- and public-sector projects from start to finish</b> as a full stack developer</li>
-      <li><b>Biryerden</b>, a smart-municipality product, is among the platforms currently in production</li>
-      <li>I am carrying out research on deep learning and computer vision for my <b>M.Sc. at Bursa Technical University</b></li>
-      <li>I publish articles on artificial intelligence on <b><a href="https://medium.com/@AysenurYldz">Medium</a></b></li>
-      <li>I am always glad to discuss <b>YOLO in production, OCR, LSTM sequence models or serving models with Triton</b></li>
-    </ul>
-    <ul class="tr">
-      <li><b>Birsav Bilişim'de iki ekip liderinden biriyim</b>; proje planlaması, iş bölümü, teknik kararlar ve müşteri sunumları benim yürüttüğüm süreçler</li>
-      <li><b>Projelerimizin yapay zekâ tarafını</b> yönetiyorum: OCR belge analizi, vatandaşa yönelik chatbot sistemleri, anomali tespiti ve takibi</li>
-      <li><b>Özel sektör ve kamu projelerinde</b> full stack geliştirici olarak <b>baştan sona</b> geliştirme yapıyorum</li>
-      <li>Üretimde olan platformlar arasında akıllı belediyecilik ürünü <b>Biryerden</b> de yer alıyor</li>
-      <li><b>Bursa Teknik Üniversitesi</b>'ndeki yüksek lisansımda derin öğrenme ve bilgisayarlı görü üzerine araştırma yapıyorum</li>
-      <li>Yapay zekâ üzerine <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>'da yazılar yayımlıyorum</li>
-      <li><b>Üretimde YOLO, OCR, Flutter–Node mimarisi ya da Triton ile model servisleştirme</b> konularını konuşmaktan memnuniyet duyarım</li>
-    </ul>
+    <div class="nowtext en">
+      <p>Right now I am <b>one of two team leads at Birsav Bilişim</b>; project planning, task allocation, technical decisions and client presentations are among the processes I run directly. I also manage the AI side of our projects, delivering solutions such as OCR-based document analysis, citizen-facing chatbot systems, and anomaly detection and tracking from end to end.</p>
+      <p>My work is not limited to AI: on <b>private- and public-sector projects</b> I build from start to finish as a full stack developer. <b>Biryerden</b>, a smart-municipality product, is among the platforms I have worked on that are currently in production.</p>
+      <p>On the academic side, I am continuing my research on deep learning and computer vision in my <b>M.Sc. at Bursa Technical University</b>. To share what I learn in practice and in research, I publish articles on artificial intelligence on <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>.</p>
+    </div>
+    <div class="nowtext tr">
+      <p>Şu anda Birsav Bilişim'de şirketteki <b>iki ekip liderinden biri</b> olarak görev yapıyorum; proje planlaması, iş bölümü, teknik kararlar ve müşteri sunumları doğrudan benim yürüttüğüm süreçler arasında yer alıyor. Aynı zamanda projelerimizin yapay zekâ tarafını yöneterek OCR tabanlı belge analizi, vatandaşlara yönelik chatbot sistemleri, anomali tespiti ve takibi gibi çözümleri uçtan uca hayata geçiriyorum.</p>
+      <p>Sadece yapay zekâ odaklı kalmıyor, <b>özel sektör ve kamu projelerinde</b> full stack geliştirici olarak baştan sona geliştirmeler yapıyorum. Geliştirme süreçlerinde yer aldığım ve şu an üretimde olan platformlar arasında akıllı belediyecilik ürünü <b>Biryerden</b> de bulunuyor.</p>
+      <p>Akademik tarafta ise <b>Bursa Teknik Üniversitesi</b>'ndeki yüksek lisans eğitimimde derin öğrenme ve bilgisayarlı görü üzerine araştırmalarımı sürdürüyorum. Sektördeki pratiklerimi ve araştırmalarımı paylaşmak adına yapay zekâ üzerine <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>'da yazılar yayımlıyorum.</p>
+    </div>
   </div>
 </section>
 
@@ -820,62 +818,55 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
   </div>
 
   <div class="prose en" style="margin-bottom:2.4rem">
-    <p>I take an active role in software development for public- and private-sector clients. On these projects the whole web and mobile side is my responsibility; I develop every layer myself, from database design through to the user interface. The systems below are products I have built at Birsav Bilişim.</p>
+    <p>I take an active role in software development for public- and private-sector clients. On these projects the whole web and mobile side is my responsibility; I develop every layer myself, from database design through to the user interface.</p>
   </div>
   <div class="prose tr" style="margin-bottom:2.4rem">
-    <p>Kamu ve özel sektör müşterileri için yazılım geliştirme süreçlerinde aktif rol alıyorum. Bu projelerde web ve mobil tarafın tamamı benim sorumluluğumda; veri tabanı tasarımından kullanıcı arayüzüne kadar tüm katmanları kendim geliştiriyorum. Aşağıdaki sistemler Birsav Bilişim bünyesinde geliştirdiğim ürünler.</p>
+    <p>Kamu ve özel sektör müşterileri için yazılım geliştirme süreçlerinde aktif rol alıyorum. Bu projelerde web ve mobil tarafın tamamı benim sorumluluğumda; veri tabanı tasarımından kullanıcı arayüzüne kadar tüm katmanları kendim geliştiriyorum.</p>
   </div>
 
   <div class="grid g2">
     <div class="cell st tilt">
-      <span class="tag">üretim · stok · mobil</span>
-      <h3>Birstok</h3>
-      <p class="en">A production and inventory management system. I developed the order and work-order flows, slab-level stock tracking, the rack layout map, label and QR-code printing, and the dispatch and reporting modules. Alongside the web interface it has a mobile application for use on the shop floor.</p>
-      <p class="tr">Üretim ve stok yönetim sistemi. Sipariş ve iş emri süreçlerini, plaka bazlı stok takibini, sehpa yerleşim haritasını, etiket ve karekod basımını, sevkiyat ile raporlama modüllerini geliştirdim. Web arayüzünün yanında sahada kullanılan bir mobil uygulaması da bulunuyor.</p>
-      <div class="stack"><span>Node.js</span><span>Next.js</span><span>Flutter</span><span>SQL</span></div>
+      <span class="tag">flutter · mobile</span>
+      <h3><span class="en">Municipal mobile applications</span><span class="tr">Belediye mobil uygulamaları</span></h3>
+      <p class="en">I develop iOS and Android applications for city services with Flutter. The applications run on APIs written in Node.js.</p>
+      <p class="tr">Şehir hizmetleri için Flutter ile iOS ve Android uygulamaları geliştiriyorum. Uygulamalar Node.js ile yazılmış API'ler üzerinden çalışıyor.</p>
+      <div class="stack"><span>Flutter</span><span>Dart</span><span>Node.js</span><span>REST</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">İK · bordro</span>
-      <h3><span class="en">İnsan Kaynakları</span><span class="tr">İnsan Kaynakları</span></h3>
-      <p class="en">A human resources and payroll system. I developed payroll calculation, timekeeping, working-time balancing, personnel records, statutory notifications and the reporting modules. The calculations are built to follow current legislation.</p>
-      <p class="tr">İnsan kaynakları ve bordro sistemi. Bordro hesaplama, puantaj, denkleştirme, özlük kayıtları, yasal bildirimler ve raporlama modüllerini geliştirdim. Hesaplamalar güncel mevzuata göre kurgulandı.</p>
-      <div class="stack"><span>Node.js</span><span>Next.js</span><span>SQL</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">akıllı belediyecilik</span>
-      <h3>Biryerden</h3>
-      <p class="en">A smart-municipality platform. I work on the municipal panel and the API services, and I also run the AI side of the platform.</p>
-      <p class="tr">Akıllı belediyecilik platformu. Belediye paneli ve API servisleri üzerinde çalışıyor, platformun yapay zekâ tarafını da yürütüyorum.</p>
-      <div class="stack"><span>Next.js</span><span>Node.js</span><span>Python</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">stok · satış</span>
-      <h3>Biryapı</h3>
-      <p class="en">A stock and sales management system for building materials, covering products, orders and dispatch.</p>
-      <p class="tr">Yapı malzemeleri için stok ve satış yönetim sistemi. Ürün, sipariş ve sevkiyat süreçlerinin takibini sağlıyor.</p>
-      <div class="stack"><span>Node.js</span><span>Next.js</span><span>SQL</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">kariyer · platform</span>
-      <h3>Kollektif Kariyer</h3>
-      <p class="en">A career and job listing platform. I developed the system that runs job postings and applications.</p>
-      <p class="tr">Kariyer ve iş ilanı platformu. İlan yayımlama ve başvuru süreçlerinin yürütüldüğü sistemi geliştirdim.</p>
+      <span class="tag">web · operations</span>
+      <h3><span class="en">Municipal sports &amp; facility systems</span><span class="tr">Belediye spor ve tesis sistemleri</span></h3>
+      <p class="en">I develop the systems that manage membership, booking and day-to-day operations at public sports facilities.</p>
+      <p class="tr">Kamu spor tesislerinin üyelik, rezervasyon ve günlük işleyiş süreçlerini yöneten sistemler geliştiriyorum.</p>
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>SQL</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">web · kulüp</span>
-      <h3><span class="en">Gürsu Belediyespor</span><span class="tr">Gürsu Belediyespor</span></h3>
-      <p class="en">The web platform of a sports club. I built it from the front end through to the API services.</p>
-      <p class="tr">Spor kulübünün web platformu. Ön yüzden API servislerine kadar tamamını geliştirdim.</p>
-      <div class="stack"><span>Next.js</span><span>Node.js</span></div>
+      <span class="tag">web · enterprise</span>
+      <h3><span class="en">HR systems for the private sector</span><span class="tr">Özel sektör İK sistemleri</span></h3>
+      <p class="en">I develop personnel records, internal processes and reporting modules for company human resources teams.</p>
+      <p class="tr">Şirketlerin insan kaynakları ekipleri için personel kayıtları, iç süreçler ve raporlama modülleri geliştiriyorum.</p>
+      <div class="stack"><span>Next.js</span><span>Node.js</span><span>SQL</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">web · enterprise</span>
+      <h3><span class="en">Real-time warehouse and inventory platform</span><span class="tr">Gerçek zamanlı depo ve envanter yönetim platformu</span></h3>
+      <p class="en">I developed <b>BirStok</b>, a real-time digital inventory and warehouse tracking platform through which I digitised industrial slab and product tracking. With this system every warehouse process for industrial products is managed digitally and in real time.</p>
+      <p class="tr">Endüstriyel plaka ve ürün takip süreçlerini dijitalleştirdiğim <b>BirStok</b> adlı gerçek zamanlı dijital envanter ve depo takip platformunu geliştirdim. Bu sistem ile endüstriyel ürünlerin tüm depo süreçleri dijital ortamda gerçek zamanlı olarak yönetiliyor.</p>
+      <div class="stack"><span>Next.js</span><span>Node.js</span><span>SQL</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">web · community</span>
+      <h3><span class="en">Community &amp; entrepreneurship platforms</span><span class="tr">Topluluk ve girişim platformları</span></h3>
+      <p class="en">I develop European-model collective venture and community sites with Next.js.</p>
+      <p class="tr">Avrupa modeli kolektif girişim ve topluluk sitelerini Next.js teknolojisiyle geliştiriyorum.</p>
+      <div class="stack"><span>Next.js</span><span>Node.js</span><span>REST</span></div>
     </div>
   </div>
 
   <div class="prose seams en">
-    <p>I don't share the names of the client companies behind these products. All of them are <em>live systems serving real users</em>, and they have to keep working long after launch.</p>
+    <p>I don't share the names of the client companies behind these systems. All of them are <em>live systems serving real users</em>, and they have to keep working long after launch.</p>
   </div>
   <div class="prose seams tr">
-    <p>Bu ürünlerin arkasındaki müşteri firmaların isimlerini paylaşmıyorum. Hepsi <em>gerçek kullanıcılara hizmet veren, hâlen yayında</em> olan ve yayına alındıktan sonra da çalışmaya devam etmesi gereken sistemler.</p>
+    <p>Bu sistemlerin arkasındaki müşteri firmaların isimlerini paylaşmıyorum. Hepsi <em>gerçek kullanıcılara hizmet veren, hâlen yayında</em> olan ve yayına alındıktan sonra da çalışmaya devam etmesi gereken sistemler.</p>
   </div>
 </section>
 
@@ -1047,24 +1038,24 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
   <div class="grid g3">
     <div class="cell award st tilt">
       <div class="rank">3<span style="font-size:.5em">rd</span></div>
-      <div class="sub">Teknofest 2023 · Türkiye</div>
+      <div class="sub">Teknofest 2023 · <span class="en">3rd in Türkiye</span><span class="tr">Türkiye 3.'sü</span></div>
       <h3><span class="en">AI in Transportation</span><span class="tr">Ulaşımda Yapay Zekâ</span></h3>
-      <p class="en">I served as <b>team captain of ForesighTech</b>. We developed a YOLO-based system that detects a safe landing zone for a UAV in real time, distinguishing between people, animals and ground vehicles in the landing area. Project planning and task allocation were my responsibility, and I carried out the training and optimisation of the YOLO architecture.</p>
-      <p class="tr"><b>ForesighTech takımının kaptanı olarak görev aldım.</b> İHA'nın güvenli iniş alanını gerçek zamanlı tespit eden; iniş bölgesindeki insan, hayvan ve kara taşıtlarını birbirinden ayırt eden YOLO tabanlı bir sistem geliştirdik. Proje planlaması ve iş bölümü benim sorumluluğumdaydı; YOLO mimarisinin eğitimini ve optimizasyonunu da ben gerçekleştirdim.</p>
+      <p class="en">I served as <b>team captain of ForesighTech</b>. We developed a YOLO-based system that detects safe landing zones for UAVs in real time and tells people, animals and ground vehicles apart in the landing area instantly. As team captain I managed project planning and task allocation, and I also carried out the training and optimisation of the YOLO architecture myself.</p>
+      <p class="tr"><b>ForesighTech takımının kaptanı olarak görev aldım.</b> İHA'ların güvenli iniş alanlarını gerçek zamanlı olarak tespit eden; iniş bölgesindeki insan, hayvan ve kara taşıtlarını anlık olarak birbirinden ayırt edebilen YOLO tabanlı bir sistem geliştirdik. Takım kaptanı olarak proje planlaması ve iş bölümü süreçlerini yönetirken, aynı zamanda YOLO mimarisinin eğitimini ve optimizasyonunu da bizzat gerçekleştirdim.</p>
     </div>
     <div class="cell award st tilt">
       <div class="rank">2209<span style="font-size:.5em">-A</span></div>
-      <div class="sub">TÜBİTAK · <span class="en">funded research</span><span class="tr">destekli araştırma</span></div>
+      <div class="sub">TÜBİTAK · <span class="en">Funded Research</span><span class="tr">Destekli Araştırma</span></div>
       <h3><span class="en">Sign language → text</span><span class="tr">İşaret dilinden metne</span></h3>
-      <p class="en">I developed an <b>LSTM-based model that reads sign language gestures from video and translates them into text</b>, with the aim of making everyday communication easier for the hearing impaired. I carried out every stage myself, from data collection through to error analysis. It was also my undergraduate thesis.</p>
-      <p class="tr">İşitme engellilerin günlük iletişimini kolaylaştırmak amacıyla, <b>işaret dili hareketlerini videodan okuyarak metne çeviren LSTM tabanlı bir model</b> geliştirdim. Veri toplama aşamasından hata analizine kadar tüm adımları kendim yürüttüm. Aynı zamanda lisans bitirme tezimdi.</p>
+      <p class="en">To make everyday communication easier for the hearing impaired, I developed an <b>LSTM-based deep learning model that reads sign language gestures from video and translates them into text</b>. On this project — my undergraduate thesis, funded by TÜBİTAK — I carried out every step end to end, from data collection through model training to error analysis.</p>
+      <p class="tr">İşitme engellilerin günlük iletişimini kolaylaştırmak amacıyla, <b>işaret dili hareketlerini videolardan okuyarak metne çeviren LSTM tabanlı bir derin öğrenme modeli</b> geliştirdim. Aynı zamanda lisans bitirme tezim olan ve TÜBİTAK tarafından desteklenen bu projede; veri toplama aşamasından model eğitimine ve hata analizine kadar tüm adımları uçtan uca kendim yürüttüm.</p>
     </div>
     <div class="cell award st tilt">
       <div class="rank" style="font-size:1.75rem;letter-spacing:.02em">FINALIST</div>
-      <div class="sub">Teknofest 2022</div>
+      <div class="sub">Teknofest 2022 · Finalist</div>
       <h3><span class="en">AI in Healthcare</span><span class="tr">Sağlıkta Yapay Zekâ</span></h3>
-      <p class="en">I worked as an AI developer on a YOLO-based model that detects <b>six different conditions plus the healthy case from abdominal imaging</b>. I carried out model development, data preprocessing and performance analysis.</p>
-      <p class="tr">Abdomen görüntülerinden <b>altı farklı hastalığı ve sağlıklı durumu</b> tespit eden YOLO tabanlı bir modelde yapay zekâ geliştiricisi olarak görev aldım. Model geliştirme, veri ön işleme ve performans analizi çalışmalarını yürüttüm.</p>
+      <p class="en">I worked as the AI developer on a YOLO-based model that automatically detects <b>six different conditions plus the healthy case from abdominal imaging</b>. Over the course of the project I carried out model development, data preprocessing and performance analysis, contributing to our team reaching the final.</p>
+      <p class="tr">Abdomen görüntülerinden <b>altı farklı hastalığı ve sağlıklı durumu</b> otomatik olarak tespit eden YOLO tabanlı bir modelin yapay zekâ geliştiricisi olarak görev aldım. Proje süresince model geliştirme, veri ön işleme ve performans analizi çalışmalarını yürüterek takımımızın finalist olmasına katkı sağladım.</p>
     </div>
   </div>
 </section>
