@@ -851,14 +851,14 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
     <div class="cols">
       <p class="st">I'm doing my M.Sc. at <b>Bursa Technical University</b> while working at <b>Birsav Bilişim</b>, where I am a <b>team lead</b>. I lead projects on both the AI side and the private-sector side: project planning, task allocation, technical decisions, client presentations and the AI work itself are all mine to run.</p>
       <p class="st">On private- and public-sector projects I work as a <b>full stack developer</b>, building them from start to finish. With <b>Node.js, Next.js and Flutter</b> I work on municipal mobile applications, sports and facility systems, HR platforms, and community and entrepreneurship sites. In smart-municipality systems I have parts I actively work on, particularly the <b>Biryerden</b> platform.</p>
-      <p class="st">Alongside this I run AI solutions end to end — <em>real-time detection in the field, image forgery localization, super-resolution, OCR-based document analysis and chatbot systems</em>.</p>
+      <p class="st">Alongside this I run AI solutions end to end — <em>image forgery localization, OCR-based document analysis, anomaly detection and chatbot systems</em>.</p>
     </div>
   </div>
   <div class="prose tr">
     <div class="cols">
       <p class="st">Bursa Teknik Üniversitesi'nde yüksek lisans eğitimime devam etmekte olup, eş zamanlı olarak <b>Birsav Bilişim</b>'de çalışmalarımı sürdürüyorum. Burada <b>ekip lideriyim</b>; hem yapay zekâ tarafında hem de özel sektör tarafında liderlik üstlendiğim projelerim mevcut. Projelerin planlaması, iş bölümü, teknik kararları, müşteri sunumları ve yapay zekâ süreçlerini bizzat yürütüyorum.</p>
       <p class="st">Özel sektör ve kamu projelerinde <b>full stack geliştirici</b> olarak baştan sona geliştirmeler yapıyorum. <b>Node.js, Next.js ve Flutter</b> ile belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri üzerine çalışmalarım bulunuyor. Akıllı belediyecilik sistemlerinde, özellikle <b>Biryerden</b> platformunda aktif olarak çalıştığım bölümler mevcut.</p>
-      <p class="st">Bununla birlikte <em>sahada gerçek zamanlı tespit, görüntü sahteciliği lokalizasyonu, süper çözünürlük, OCR tabanlı belge analizi ve chatbot sistemleri</em> gibi yapay zekâ çözümlerini de uçtan uca yönetiyorum.</p>
+      <p class="st">Bununla birlikte <em>görüntü sahteciliği lokalizasyonu, OCR tabanlı belge analizi, anomali tespiti ve chatbot sistemleri</em> gibi yapay zekâ çözümlerini de uçtan uca yönetiyorum.</p>
     </div>
   </div>
 
@@ -947,13 +947,6 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>REST</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">ai · field</span>
-      <h3><span class="en">Littering detection in the field</span><span class="tr">Sahada çalışan çevre ihlali tespiti</span></h3>
-      <p class="en">A YOLO11-based system that catches the moment of littering from a camera in real time: a six-class litter model, per-class thresholds and a live monitoring panel. New model versions are measured on real field footage; a version that loses the measurement never ships.</p>
-      <p class="tr">Kameradan çöp atma anını gerçek zamanlı yakalayan YOLO11 tabanlı sistem: altı sınıflı çöp modeli, sınıf bazlı eşikler ve canlı izleme paneli. Yeni model sürümleri gerçek saha videolarında ölçülüyor; ölçümde geride kalan sürüm sahaya çıkmıyor.</p>
-      <div class="stack"><span>YOLO11</span><span>PyTorch</span><span>OpenCV</span><span>Streamlit</span></div>
-    </div>
-    <div class="cell st tilt">
       <span class="tag">ai · vision</span>
       <h3><span class="en">Smart library</span><span class="tr">Akıllı kütüphane</span></h3>
       <p class="en">An image-processing pipeline that reads desk occupancy (occupied · away · free) from camera footage, and the e-library screens built on top of it.</p>
@@ -961,39 +954,11 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <div class="stack"><span>YOLO</span><span>Python</span><span>Next.js</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">ai · imaging</span>
-      <h3><span class="en">Super-resolution for map imagery</span><span class="tr">Harita görüntüsünde süper çözünürlük</span></h3>
-      <p class="en">×4–×16 upscaling experiments on low-resolution map mosaics: classical methods, Real-ESRGAN / RealESRNet and back-projection refinement, compared side by side in a georeferenced viewer.</p>
-      <p class="tr">Düşük çözünürlüklü harita mozaiklerini ×4–×16 büyütme deneyleri: klasik yöntemler, Real-ESRGAN / RealESRNet ve geri izdüşüm iyileştirmesi; sonuçlar coğrafi koordinatlı bir görüntüleyicide yan yana.</p>
-      <div class="stack"><span>PyTorch</span><span>ESRGAN</span><span>GIS</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">ai · nlp · web</span>
-      <h3><span class="en">Public opinion &amp; social listening</span><span class="tr">Kamuoyu ve sosyal dinleme</span></h3>
-      <p class="en">A management dashboard that collects news and social media, classifies topic and sentiment and raises crisis alerts, with a separate report screen for local election results and published polls.</p>
-      <p class="tr">Haber ve sosyal medya akışlarını toplayan, konu ve duygu sınıflandırması yapan, kriz uyarısı veren yönetici paneli; yerel seçim sonuçları ve kamuya açıklanmış anketler için ayrı rapor ekranı.</p>
-      <div class="stack"><span>NLP</span><span>Node.js</span><span>React</span><span>SQL</span></div>
-    </div>
-    <div class="cell st tilt">
       <span class="tag">web · public sector</span>
       <h3><span class="en">Municipal ERP modules</span><span class="tr">Belediye ERP modülleri</span></h3>
       <p class="en">Council Affairs, Municipal Council, Executive Committee, Archive, Legal and Private Office modules on Biryerden, with clause-by-clause feature parity against the relevant legislation and the previous system.</p>
       <p class="tr">Biryerden'de Yazı İşleri, Meclis, Encümen, Arşiv, Hukuk ve Özel Kalem modülleri; ilgili mevzuat ve önceki sistemle madde madde işlev eşitliği (parite) çalışması.</p>
       <div class="stack"><span>Node.js</span><span>React</span><span>PostgreSQL</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">ai · architecture</span>
-      <h3><span class="en">Corpus architecture for legal AI</span><span class="tr">Hukuk yapay zekâsı için korpus mimarisi</span></h3>
-      <p class="en">Planning a "card first, full text later" architecture for a legal assistant over millions of decisions and statutes: sources split by branch and topic, with a summary-and-keyword card for every document.</p>
-      <p class="tr">Milyonlarca karar ve mevzuat üzerinde çalışan bir hukuk asistanında kaynakları dala ve konuya ayıran, her belgeye özet ve anahtar kelime kartı üreten "önce kart, sonra tam metin" mimarisinin planlanması.</p>
-      <div class="stack"><span>LLM</span><span>PostgreSQL</span><span>RAG</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">r&amp;d · product</span>
-      <h3><span class="en">R&amp;D and funding applications</span><span class="tr">Ar-Ge ve teşvik başvuruları</span></h3>
-      <p class="en">Project applications, budgets and usage plans for AI-driven products, and the product presentations that go with them.</p>
-      <p class="tr">Yapay zekâ destekli ürünler için proje başvuruları, bütçe ve kullanım planları ve bunlara eşlik eden ürün tanıtım sunumları.</p>
-      <div class="stack"><span>planning</span><span>budget</span><span>presentation</span></div>
     </div>
   </div>
 
