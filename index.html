@@ -6,12 +6,12 @@
 <title>Ayşenur Yıldız — AI Engineer / Full Stack Developer</title>
 <meta name="description" content="Ayşenur Yıldız — AI Engineer and Full Stack Developer in Bursa, Türkiye. Computer vision, OCR, NLP and deep learning; Next.js, Node.js and Flutter product engineering.">
 <meta name="author" content="Ayşenur Yıldız">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FBF7F1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ayşenur Yıldız — AI Engineer / Full Stack Developer">
 <meta property="og:description" content="I build computer vision, OCR and NLP models. I also write the web and mobile products they run in, with Next.js, Node.js and Flutter.">
 <meta property="og:url" content="https://aysenuryldz.github.io/portfolio/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%234CC9F0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2307071A'/%3E%3Cpath d='M18 46 L32 16 L46 46' stroke='url(%23g)' stroke-width='5' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M24 37 h16' stroke='url(%23g)' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23A9785A'/%3E%3Cstop offset='1' stop-color='%237E9C7A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%232B211C'/%3E%3Cpath d='M18 46 L32 16 L46 46' stroke='url(%23g)' stroke-width='5' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M24 37 h16' stroke='url(%23g)' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
@@ -19,13 +19,14 @@
 <style>
 /* ══ tokens — dark-first (this page's primary world) ═══════════════════ */
 :root{
-  --ink:#FFFFFF; --surf:#FFFFFF; --surf2:#FDF7F9; --line:#EFE2E8;
-  --txt:#2E2430; --muted:#6E5F6A; --dim:#9C8C96;
-  --violet:#C97B94; --blue:#9B72C4; --cyan:#5B93C4;
-  --glow-v:rgba(201,123,148,.16); --glow-b:rgba(168,205,234,.28);
-  --chip:rgba(201,123,148,.08); --chipline:rgba(201,123,148,.26);
-  --glass:rgba(255,255,255,.72); --glass-line:rgba(201,123,148,.18);
-  --shadow:0 22px 50px -28px rgba(80,40,60,.22);
+  /* Sonbahar: krema zemin, espresso yazı; karamel · kiremit · adaçayı vurgular. */
+  --ink:#FBF7F1; --surf:#FFFFFF; --surf2:#F7F0E7; --line:#ECE1D4;
+  --txt:#2B211C; --muted:#6B5D53; --dim:#97897F;
+  --violet:#A9785A; --blue:#C98B6F; --cyan:#7E9C7A;
+  --glow-v:rgba(169,120,90,.16); --glow-b:rgba(126,156,122,.22);
+  --chip:rgba(169,120,90,.08); --chipline:rgba(169,120,90,.26);
+  --glass:rgba(255,252,247,.74); --glass-line:rgba(169,120,90,.18);
+  --shadow:0 22px 50px -28px rgba(70,45,30,.22);
   --grad:linear-gradient(115deg,var(--violet),var(--blue) 48%,var(--cyan));
 
   --f-disp:'Sora','Segoe UI',system-ui,sans-serif;
@@ -38,22 +39,22 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --ink:#150F16; --surf:#1D141F; --surf2:#281C2B; --line:#3A2B3C;
-    --txt:#F6ECF1; --muted:#C3ADB8; --dim:#8E7C87;
-    --violet:#E4A8BC; --blue:#C9A8E8; --cyan:#A8CDEA;
-    --glow-v:rgba(228,168,188,.22); --glow-b:rgba(168,205,234,.18);
-    --chip:rgba(228,168,188,.10); --chipline:rgba(228,168,188,.30);
-    --glass:rgba(29,20,31,.6); --glass-line:rgba(228,168,188,.16);
+    --ink:#15110E; --surf:#1D1814; --surf2:#262019; --line:#3A3027;
+    --txt:#F2EAE2; --muted:#C7B8AA; --dim:#8E8174;
+    --violet:#D9B48E; --blue:#E3A68B; --cyan:#A9BFA0;
+    --glow-v:rgba(217,180,142,.20); --glow-b:rgba(169,191,160,.16);
+    --chip:rgba(217,180,142,.10); --chipline:rgba(217,180,142,.30);
+    --glass:rgba(29,24,20,.62); --glass-line:rgba(217,180,142,.16);
     --shadow:0 24px 60px -28px rgba(0,0,0,.8);
   }
 }
 :root[data-theme="dark"]{
-  --ink:#150F16; --surf:#1D141F; --surf2:#281C2B; --line:#3A2B3C;
-  --txt:#F6ECF1; --muted:#C3ADB8; --dim:#8E7C87;
-  --violet:#E4A8BC; --blue:#C9A8E8; --cyan:#A8CDEA;
-  --glow-v:rgba(228,168,188,.22); --glow-b:rgba(168,205,234,.18);
-  --chip:rgba(228,168,188,.10); --chipline:rgba(228,168,188,.30);
-  --glass:rgba(29,20,31,.6); --glass-line:rgba(228,168,188,.16);
+  --ink:#15110E; --surf:#1D1814; --surf2:#262019; --line:#3A3027;
+  --txt:#F2EAE2; --muted:#C7B8AA; --dim:#8E8174;
+  --violet:#D9B48E; --blue:#E3A68B; --cyan:#A9BFA0;
+  --glow-v:rgba(217,180,142,.20); --glow-b:rgba(169,191,160,.16);
+  --chip:rgba(217,180,142,.10); --chipline:rgba(217,180,142,.30);
+  --glass:rgba(29,24,20,.62); --glass-line:rgba(217,180,142,.16);
   --shadow:0 24px 60px -28px rgba(0,0,0,.8);
 }
 
@@ -808,14 +809,14 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
     <div class="cols">
       <p class="st">I'm doing my M.Sc. at <b>Bursa Technical University</b> while working at <b>Birsav Bilişim</b>, where I am <b>one of the company's two team leads</b>. I lead projects on both the AI side and the private-sector side: project planning, task allocation, technical decisions, client presentations and the AI work itself are all mine to run.</p>
       <p class="st">On private- and public-sector projects I work as a <b>full stack developer</b>, building them from start to finish. With <b>Node.js, Next.js and Flutter</b> I work on municipal mobile applications, sports and facility systems, HR platforms, and community and entrepreneurship sites. In smart-municipality systems I have parts I actively work on, particularly the <b>Biryerden</b> platform.</p>
-      <p class="st">Alongside this I run AI solutions end to end — <em>OCR-based document analysis, anomaly detection and chatbot systems</em>.</p>
+      <p class="st">Alongside this I run AI solutions end to end — <em>real-time detection in the field, image forgery localization, super-resolution, OCR-based document analysis and chatbot systems</em>. Off the clock: a cup of coffee and, ideally, a black cat nearby.</p>
     </div>
   </div>
   <div class="prose tr">
     <div class="cols">
       <p class="st">Bursa Teknik Üniversitesi'nde yüksek lisans eğitimime devam etmekte olup, eş zamanlı olarak <b>Birsav Bilişim</b>'de çalışmalarımı sürdürüyorum. Burada şirketteki <b>iki ekip liderinden biri</b> olarak görev yapıyorum; hem yapay zekâ tarafında hem de özel sektör tarafında liderlik üstlendiğim projelerim mevcut. Projelerin planlaması, iş bölümü, teknik kararları, müşteri sunumları ve yapay zekâ süreçlerini bizzat yürütüyorum.</p>
       <p class="st">Özel sektör ve kamu projelerinde <b>full stack geliştirici</b> olarak baştan sona geliştirmeler yapıyorum. <b>Node.js, Next.js ve Flutter</b> ile belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri üzerine çalışmalarım bulunuyor. Akıllı belediyecilik sistemlerinde, özellikle <b>Biryerden</b> platformunda aktif olarak çalıştığım bölümler mevcut.</p>
-      <p class="st">Bununla birlikte <em>OCR tabanlı belge analizi, anomali tespiti ve chatbot sistemleri</em> gibi yapay zekâ çözümlerini de uçtan uca yönetiyorum.</p>
+      <p class="st">Bununla birlikte <em>sahada gerçek zamanlı tespit, görüntü sahteciliği lokalizasyonu, süper çözünürlük, OCR tabanlı belge analizi ve chatbot sistemleri</em> gibi yapay zekâ çözümlerini de uçtan uca yönetiyorum. İşin dışında bir fincan kahve, yanımda da mümkünse bir siyah kedi.</p>
     </div>
   </div>
 
@@ -843,12 +844,12 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
     <div class="nowtext en">
       <p>Right now I am <b>one of two team leads at Birsav Bilişim</b>; project planning, task allocation, technical decisions and client presentations are among the processes I run directly. I also manage the AI side of our projects, delivering solutions such as OCR-based document analysis, citizen-facing chatbot systems, and anomaly detection and tracking from end to end.</p>
       <p>My work is not limited to AI: on <b>private- and public-sector projects</b> I build from start to finish as a full stack developer. <b>Biryerden</b>, a smart-municipality product, is among the platforms I have worked on that are currently in production.</p>
-      <p>On the academic side, I am continuing my research on deep learning and computer vision in my <b>M.Sc. at Bursa Technical University</b>. To share what I learn in practice and in research, I publish articles on artificial intelligence on <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>.</p>
+      <p>On the academic side, my <b>M.Sc. thesis at Bursa Technical University</b> is on deep learning models that localize image forgeries. To share what I learn in practice and in research, I publish articles on artificial intelligence on <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>.</p>
     </div>
     <div class="nowtext tr">
       <p>Şu anda Birsav Bilişim'de şirketteki <b>iki ekip liderinden biri</b> olarak görev yapıyorum; proje planlaması, iş bölümü, teknik kararlar ve müşteri sunumları doğrudan benim yürüttüğüm süreçler arasında yer alıyor. Aynı zamanda projelerimizin yapay zekâ tarafını yöneterek OCR tabanlı belge analizi, vatandaşlara yönelik chatbot sistemleri, anomali tespiti ve takibi gibi çözümleri uçtan uca hayata geçiriyorum.</p>
       <p>Sadece yapay zekâ odaklı kalmıyor, <b>özel sektör ve kamu projelerinde</b> full stack geliştirici olarak baştan sona geliştirmeler yapıyorum. Geliştirme süreçlerinde yer aldığım ve şu an üretimde olan platformlar arasında akıllı belediyecilik ürünü <b>Biryerden</b> de bulunuyor.</p>
-      <p>Akademik tarafta ise <b>Bursa Teknik Üniversitesi</b>'ndeki yüksek lisans eğitimimde derin öğrenme ve bilgisayarlı görü üzerine araştırmalarımı sürdürüyorum. Sektördeki pratiklerimi ve araştırmalarımı paylaşmak adına yapay zekâ üzerine <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>'da yazılar yayımlıyorum.</p>
+      <p>Akademik tarafta ise <b>Bursa Teknik Üniversitesi</b>'ndeki yüksek lisans tezimde görüntü sahteciliğinin yerini tespit eden derin öğrenme modelleri üzerinde çalışıyorum. Sektördeki pratiklerimi ve araştırmalarımı paylaşmak adına yapay zekâ üzerine <b><a href="https://medium.com/@AysenurYldz">Medium</a></b>'da yazılar yayımlıyorum.</p>
     </div>
   </div>
 </section>
@@ -902,6 +903,55 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <p class="en">I develop European-model collective venture and community sites with Next.js.</p>
       <p class="tr">Avrupa modeli kolektif girişim ve topluluk sitelerini Next.js teknolojisiyle geliştiriyorum.</p>
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>REST</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">ai · field</span>
+      <h3><span class="en">Littering detection in the field</span><span class="tr">Sahada çalışan çevre ihlali tespiti</span></h3>
+      <p class="en">A YOLO11-based system that catches the moment of littering from a camera in real time: a six-class litter model, per-class thresholds and a live monitoring panel. New model versions are measured on real field footage; a version that loses the measurement never ships.</p>
+      <p class="tr">Kameradan çöp atma anını gerçek zamanlı yakalayan YOLO11 tabanlı sistem: altı sınıflı çöp modeli, sınıf bazlı eşikler ve canlı izleme paneli. Yeni model sürümleri gerçek saha videolarında ölçülüyor; ölçümde geride kalan sürüm sahaya çıkmıyor.</p>
+      <div class="stack"><span>YOLO11</span><span>PyTorch</span><span>OpenCV</span><span>Streamlit</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">ai · vision</span>
+      <h3><span class="en">Smart library</span><span class="tr">Akıllı kütüphane</span></h3>
+      <p class="en">An image-processing pipeline that reads desk occupancy (occupied · away · free) from camera footage, and the e-library screens built on top of it.</p>
+      <p class="tr">Kamera görüntüsünden çalışma masalarının doluluğunu (dolu · ara · boş) çıkaran görüntü işleme hattı ve buna bağlı e-kütüphane ekranları.</p>
+      <div class="stack"><span>YOLO</span><span>Python</span><span>Next.js</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">ai · imaging</span>
+      <h3><span class="en">Super-resolution for map imagery</span><span class="tr">Harita görüntüsünde süper çözünürlük</span></h3>
+      <p class="en">×4–×16 upscaling experiments on low-resolution map mosaics: classical methods, Real-ESRGAN / RealESRNet and back-projection refinement, compared side by side in a georeferenced viewer.</p>
+      <p class="tr">Düşük çözünürlüklü harita mozaiklerini ×4–×16 büyütme deneyleri: klasik yöntemler, Real-ESRGAN / RealESRNet ve geri izdüşüm iyileştirmesi; sonuçlar coğrafi koordinatlı bir görüntüleyicide yan yana.</p>
+      <div class="stack"><span>PyTorch</span><span>ESRGAN</span><span>GIS</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">ai · nlp · web</span>
+      <h3><span class="en">Public opinion &amp; social listening</span><span class="tr">Kamuoyu ve sosyal dinleme</span></h3>
+      <p class="en">A management dashboard that collects news and social media, classifies topic and sentiment and raises crisis alerts, with a separate report screen for local election results and published polls.</p>
+      <p class="tr">Haber ve sosyal medya akışlarını toplayan, konu ve duygu sınıflandırması yapan, kriz uyarısı veren yönetici paneli; yerel seçim sonuçları ve kamuya açıklanmış anketler için ayrı rapor ekranı.</p>
+      <div class="stack"><span>NLP</span><span>Node.js</span><span>React</span><span>SQL</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">web · public sector</span>
+      <h3><span class="en">Municipal ERP modules</span><span class="tr">Belediye ERP modülleri</span></h3>
+      <p class="en">Council Affairs, Municipal Council, Executive Committee, Archive, Legal and Private Office modules on Biryerden, with clause-by-clause feature parity against the relevant legislation and the previous system.</p>
+      <p class="tr">Biryerden'de Yazı İşleri, Meclis, Encümen, Arşiv, Hukuk ve Özel Kalem modülleri; ilgili mevzuat ve önceki sistemle madde madde işlev eşitliği (parite) çalışması.</p>
+      <div class="stack"><span>Node.js</span><span>React</span><span>PostgreSQL</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">ai · architecture</span>
+      <h3><span class="en">Corpus architecture for legal AI</span><span class="tr">Hukuk yapay zekâsı için korpus mimarisi</span></h3>
+      <p class="en">Planning a "card first, full text later" architecture for a legal assistant over millions of decisions and statutes: sources split by branch and topic, with a summary-and-keyword card for every document.</p>
+      <p class="tr">Milyonlarca karar ve mevzuat üzerinde çalışan bir hukuk asistanında kaynakları dala ve konuya ayıran, her belgeye özet ve anahtar kelime kartı üreten "önce kart, sonra tam metin" mimarisinin planlanması.</p>
+      <div class="stack"><span>LLM</span><span>PostgreSQL</span><span>RAG</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">r&amp;d · product</span>
+      <h3><span class="en">R&amp;D and funding applications</span><span class="tr">Ar-Ge ve teşvik başvuruları</span></h3>
+      <p class="en">Project applications, budgets and usage plans for AI-driven products, and the product presentations that go with them.</p>
+      <p class="tr">Yapay zekâ destekli ürünler için proje başvuruları, bütçe ve kullanım planları ve bunlara eşlik eden ürün tanıtım sunumları.</p>
+      <div class="stack"><span>planning</span><span>budget</span><span>presentation</span></div>
     </div>
   </div>
 
@@ -1294,6 +1344,30 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <a class="btn ghost mag" href="https://github.com/AysenurYldz">GitHub</a>
       <a class="btn ghost mag" href="https://medium.com/@AysenurYldz">Medium</a>
     </div>
+    <!-- kahve ve siyah kedi: sayfanın sahibine küçük bir imza -->
+    <div class="kedi" aria-hidden="true">
+      <svg viewBox="0 0 260 120" width="220" height="102">
+        <g class="kuyruk"><path d="M118 98 C150 100 166 82 156 60 C151 49 160 42 167 49" fill="none" stroke="var(--kedi)" stroke-width="12" stroke-linecap="round"/></g>
+        <ellipse cx="86" cy="86" rx="50" ry="29" fill="var(--kedi)" stroke="var(--kedi-kenar)" stroke-width="2"/>
+        <ellipse cx="54" cy="110" rx="12" ry="6.5" fill="var(--kedi)"/><ellipse cx="82" cy="111" rx="12" ry="6.5" fill="var(--kedi)"/>
+        <g transform="translate(44 46)">
+          <path d="M-24 -11 L-18 -38 L-3 -21 Z M24 -11 L18 -38 L3 -21 Z" fill="var(--kedi)" stroke="var(--kedi-kenar)" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle r="30" fill="var(--kedi)" stroke="var(--kedi-kenar)" stroke-width="2"/>
+          <g class="goz"><ellipse cx="-11" cy="-2" rx="5.5" ry="7" fill="#E6C27A"/><ellipse cx="11" cy="-2" rx="5.5" ry="7" fill="#E6C27A"/>
+            <ellipse cx="-11" cy="-1" rx="2" ry="5" fill="var(--kedi)"/><ellipse cx="11" cy="-1" rx="2" ry="5" fill="var(--kedi)"/>
+            <circle cx="-9.5" cy="-4.5" r="1.3" fill="#fff"/><circle cx="12.5" cy="-4.5" r="1.3" fill="#fff"/></g>
+          <path d="M-2.5 8 L2.5 8 L0 11 Z" fill="#E8A9A0"/>
+          <circle cx="-18" cy="8" r="3.6" fill="#E8A9A0" opacity=".75"/><circle cx="18" cy="8" r="3.6" fill="#E8A9A0" opacity=".75"/>
+        </g>
+        <g transform="translate(196 52)">
+          <path class="buhar" d="M16 -4 C12 -10 20 -14 16 -20 M28 -4 C24 -10 32 -14 28 -20" fill="none" stroke="var(--dim)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M40 16 C53 16 53 36 38 36" fill="none" stroke="var(--line)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 6 L44 6 L40 50 C39 54 36 56 32 56 L12 56 C8 56 5 54 4 50 Z" fill="var(--surf2)" stroke="var(--line)" stroke-width="1.5"/>
+          <ellipse cx="22" cy="7" rx="22" ry="4.5" fill="var(--violet)"/>
+          <path d="M22 10 C18 6 14 8 16 11 C17 12.5 20 13.5 22 15 C24 13.5 27 12.5 28 11 C30 8 26 6 22 10 Z" fill="var(--surf)"/>
+        </g>
+      </svg>
+    </div>
     <div class="colophon">
       <span>AYŞENUR YILDIZ · BURSA, TÜRKİYE</span>
       <span class="en">AI ENGINEER / FULL STACK DEVELOPER</span>
@@ -1309,6 +1383,19 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
 .dets .d{opacity:0; animation:pop 5.5s var(--ease) infinite}
 .dets .d1{animation-delay:.5s} .dets .d2{animation-delay:1.4s} .dets .d3{animation-delay:2.3s}
 @keyframes pop{0%{opacity:0} 6%{opacity:1} 78%{opacity:1} 92%{opacity:0} 100%{opacity:0}}
+/* iletişimdeki siyah kedi: kuyruk salınır, göz kırpar, kahve buharı tüter */
+#contact{--kedi:#2A2420; --kedi-kenar:#2A2420}
+:root[data-theme="dark"] #contact{--kedi:#0F0C0A; --kedi-kenar:#5A4A3E}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) #contact{--kedi:#0F0C0A; --kedi-kenar:#5A4A3E} }
+.kedi{display:flex; justify-content:flex-end; margin-top:2rem}
+.kedi svg{max-width:60vw; height:auto}
+.kedi .kuyruk{transform-origin:118px 98px; animation:kuyruk 4.5s ease-in-out infinite}
+@keyframes kuyruk{0%,100%{transform:rotate(0)} 30%{transform:rotate(-9deg)} 70%{transform:rotate(7deg)}}
+.kedi .goz{transform-origin:0 -2px; animation:goz 5s infinite}
+@keyframes goz{0%,90%,96%,100%{transform:scaleY(1)} 93%{transform:scaleY(.08)}}
+.kedi .buhar{animation:buhar 3.4s ease-in-out infinite}
+@keyframes buhar{0%,100%{opacity:.1} 50%{opacity:.8}}
+@media (prefers-reduced-motion: reduce){ .kedi .kuyruk,.kedi .goz,.kedi .buhar{animation:none} }
 .pulse{animation:pl 1.8s ease-out infinite}
 @keyframes pl{0%{r:4; opacity:1} 100%{r:16; opacity:0}}
 </style>
