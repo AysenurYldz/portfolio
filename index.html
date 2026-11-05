@@ -741,13 +741,39 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
             <path d="M-20 276 C 100 250 170 300 260 272 S 410 252 480 282"/>
             <path d="M-20 200 C 80 178 140 214 230 194 S 390 176 480 202"/>
           </g>
-          <g fill="var(--blue)" fill-opacity=".10">
-            <rect x="40" y="60" width="120" height="78" rx="4"/>
-            <rect x="286" y="176" width="130" height="92" rx="4"/>
-          </g>
           <!-- grid -->
           <g stroke="var(--line)" stroke-opacity=".55">
             <path d="M0 40h460M0 120h460M0 200h460M0 280h460M60 0v320M160 0v320M260 0v320M360 0v320"/>
+          </g>
+
+          <!-- sahnedeki nesneler: tespit kutuları bunları bulur -->
+          <g class="objs" fill="var(--muted)" fill-opacity=".72">
+            <!-- insan -->
+            <circle cx="95" cy="92" r="9"/>
+            <path d="M83 104 Q95 100 107 104 L110 140 H80 Z"/>
+            <path d="M84 108 L74 134 M106 108 L116 132" stroke="var(--muted)" stroke-opacity=".72" stroke-width="6" stroke-linecap="round"/>
+            <rect x="84" y="138" width="9" height="34" rx="4"/>
+            <rect x="97" y="138" width="9" height="34" rx="4"/>
+            <!-- araç -->
+            <path d="M258 180 L270 162 H306 L320 180 Z"/>
+            <rect x="236" y="178" width="102" height="24" rx="8"/>
+            <path d="M274 166 H288 V178 H266 Z M292 166 H304 L314 178 H292 Z" fill="var(--surf)" fill-opacity=".8"/>
+            <circle cx="259" cy="204" r="8.5" fill="var(--txt)" fill-opacity=".6"/>
+            <circle cx="315" cy="204" r="8.5" fill="var(--txt)" fill-opacity=".6"/>
+            <!-- kedi (oturan) -->
+            <g transform="translate(366 86)" fill="var(--txt)" fill-opacity=".72">
+              <path class="kdk" d="M30 44 C40 44 42 34 36 30" fill="none" stroke="var(--txt)" stroke-opacity=".72" stroke-width="3" stroke-linecap="round"/>
+              <ellipse cx="18" cy="32" rx="12" ry="12.5"/><circle cx="18" cy="13" r="8.5"/>
+              <path d="M10.5 9 L11.5 0.5 L16.5 6 Z M25.5 9 L24.5 0.5 L19.5 6 Z"/>
+            </g>
+            <!-- kuş (uçan) -->
+            <g transform="translate(208 58) scale(1.5)">
+              <ellipse cx="0" cy="0" rx="9" ry="5"/>
+              <circle cx="9" cy="-3" r="4"/>
+              <path d="M12.5 -3.5 L17 -2.5 L12.5 -1.5 Z" fill="var(--cyan)" fill-opacity="1"/>
+              <path class="kanat" d="M-2 -2 C-6 -14 -14 -16 -20 -12 C-12 -10 -8 -6 -4 1 Z"/>
+              <path d="M-9 0 L-16 -3 L-15 3 Z"/>
+            </g>
           </g>
 
           <!-- scan sweep -->
@@ -759,6 +785,16 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
               <rect x="52" y="72" width="86" height="104"/>
               <rect x="52" y="58" width="76" height="14" fill="var(--cyan)" stroke="none"/>
               <text x="57" y="69" font-family="JetBrains Mono, monospace" font-size="10" fill="#FFFFFF" stroke="none">person 0.97</text>
+            </g>
+            <g class="d d4" stroke="var(--violet)">
+              <rect x="356" y="78" width="66" height="62"/>
+              <rect x="356" y="64" width="56" height="14" fill="var(--violet)" stroke="none"/>
+              <text x="361" y="75" font-family="JetBrains Mono, monospace" font-size="10" fill="#fff" stroke="none">cat 0.94</text>
+            </g>
+            <g class="d d5" stroke="var(--blue)">
+              <rect x="180" y="38" width="58" height="34"/>
+              <rect x="180" y="24" width="62" height="14" fill="var(--blue)" stroke="none"/>
+              <text x="185" y="35" font-family="JetBrains Mono, monospace" font-size="10" fill="#fff" stroke="none">bird 0.89</text>
             </g>
             <g class="d d2" stroke="var(--violet)">
               <rect x="228" y="146" width="118" height="72"/>
@@ -1371,6 +1407,13 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
 @keyframes sweep{0%{transform:translateY(0)} 100%{transform:translateY(390px)}}
 .dets .d{opacity:0; animation:pop 5.5s var(--ease) infinite}
 .dets .d1{animation-delay:.5s} .dets .d2{animation-delay:1.4s} .dets .d3{animation-delay:2.3s}
+.dets .d4{animation-delay:3.0s} .dets .d5{animation-delay:3.7s}
+/* sahnedeki kuş kanat çırpar, kedi kuyruk sallar */
+.objs .kanat{transform-box:fill-box; transform-origin:100% 100%; animation:kanat .5s ease-in-out infinite alternate}
+@keyframes kanat{from{transform:scaleY(1)} to{transform:scaleY(-.35)}}
+.objs .kdk{transform-box:fill-box; transform-origin:0 100%; animation:kdk 4s ease-in-out infinite}
+@keyframes kdk{0%,100%{transform:rotate(0)} 50%{transform:rotate(-10deg)}}
+@media (prefers-reduced-motion: reduce){ .objs .kanat,.objs .kdk{animation:none} }
 @keyframes pop{0%{opacity:0} 6%{opacity:1} 78%{opacity:1} 92%{opacity:0} 100%{opacity:0}}
 /* iletişimdeki küçük kedi silüeti */
 .kedi{display:flex; justify-content:flex-end; margin-top:2rem; opacity:.85}
