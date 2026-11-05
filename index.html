@@ -850,14 +850,14 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
   <div class="prose en">
     <div class="cols">
       <p class="st">I'm doing my M.Sc. at <b>Bursa Technical University</b> while working at <b>Birsav Bilişim</b>, where I am a <b>team lead</b>. I lead projects on both the AI side and the private-sector side: project planning, task allocation, technical decisions, client presentations and the AI work itself are all mine to run.</p>
-      <p class="st">On private- and public-sector projects I work as a <b>full stack developer</b>, building them from start to finish. With <b>Node.js, Next.js and Flutter</b> I work on municipal mobile applications, sports and facility systems, HR platforms, and community and entrepreneurship sites. In smart-municipality systems I have parts I actively work on, particularly the <b>Biryerden</b> platform.</p>
+      <p class="st">On private- and public-sector projects I work as a <b>full stack developer</b>, building them from start to finish. With <b>Next.js, React and Node.js</b> I build municipal ERP modules, HR platforms, sports and facility systems, and community and entrepreneurship sites; municipal mobile apps with Flutter as well. In smart-municipality systems I have parts I actively work on, particularly the <b>Biryerden</b> platform.</p>
       <p class="st">Alongside this I run AI solutions end to end — <em>image forgery localization, OCR-based document analysis, anomaly detection and chatbot systems</em>.</p>
     </div>
   </div>
   <div class="prose tr">
     <div class="cols">
       <p class="st">Bursa Teknik Üniversitesi'nde yüksek lisans eğitimime devam etmekte olup, eş zamanlı olarak <b>Birsav Bilişim</b>'de çalışmalarımı sürdürüyorum. Burada <b>ekip lideriyim</b>; hem yapay zekâ tarafında hem de özel sektör tarafında liderlik üstlendiğim projelerim mevcut. Projelerin planlaması, iş bölümü, teknik kararları, müşteri sunumları ve yapay zekâ süreçlerini bizzat yürütüyorum.</p>
-      <p class="st">Özel sektör ve kamu projelerinde <b>full stack geliştirici</b> olarak baştan sona geliştirmeler yapıyorum. <b>Node.js, Next.js ve Flutter</b> ile belediye mobil uygulamaları, spor ve tesis sistemleri, İK platformları, topluluk ve girişim siteleri üzerine çalışmalarım bulunuyor. Akıllı belediyecilik sistemlerinde, özellikle <b>Biryerden</b> platformunda aktif olarak çalıştığım bölümler mevcut.</p>
+      <p class="st">Özel sektör ve kamu projelerinde <b>full stack geliştirici</b> olarak baştan sona geliştirmeler yapıyorum. <b>Next.js, React ve Node.js</b> ile belediye ERP modülleri, İK platformları, spor ve tesis sistemleri, topluluk ve girişim siteleri geliştiriyorum; bunlara ek olarak Flutter ile belediye mobil uygulamaları. Akıllı belediyecilik sistemlerinde, özellikle <b>Biryerden</b> platformunda aktif olarak çalıştığım bölümler mevcut.</p>
       <p class="st">Bununla birlikte <em>görüntü sahteciliği lokalizasyonu, OCR tabanlı belge analizi, anomali tespiti ve chatbot sistemleri</em> gibi yapay zekâ çözümlerini de uçtan uca yönetiyorum.</p>
     </div>
   </div>
@@ -912,17 +912,24 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
 
   <div class="grid g2">
     <div class="cell st tilt">
-      <span class="tag">flutter · mobile</span>
-      <h3><span class="en">Municipal mobile applications</span><span class="tr">Belediye mobil uygulamaları</span></h3>
-      <p class="en">I develop iOS and Android applications for city services with Flutter. The applications run on APIs written in Node.js.</p>
-      <p class="tr">Şehir hizmetleri için Flutter ile iOS ve Android uygulamaları geliştiriyorum. Uygulamalar Node.js ile yazılmış API'ler üzerinden çalışıyor.</p>
-      <div class="stack"><span>Flutter</span><span>Dart</span><span>Node.js</span><span>REST</span></div>
+      <span class="tag">web · public sector</span>
+      <h3><span class="en">Municipal ERP modules</span><span class="tr">Belediye ERP modülleri</span></h3>
+      <p class="en">Council Affairs, Municipal Council, Executive Committee, Archive, Legal and Private Office modules on Biryerden, with clause-by-clause feature parity against the relevant legislation and the previous system.</p>
+      <p class="tr">Biryerden'de Yazı İşleri, Meclis, Encümen, Arşiv, Hukuk ve Özel Kalem modülleri; ilgili mevzuat ve önceki sistemle madde madde işlev eşitliği (parite) çalışması.</p>
+      <div class="stack"><span>Node.js</span><span>React</span><span>PostgreSQL</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">web · operations</span>
-      <h3><span class="en">Municipal sports &amp; facility systems</span><span class="tr">Belediye spor ve tesis sistemleri</span></h3>
-      <p class="en">I develop the systems that manage membership, booking and day-to-day operations at public sports facilities.</p>
-      <p class="tr">Kamu spor tesislerinin üyelik, rezervasyon ve günlük işleyiş süreçlerini yöneten sistemler geliştiriyorum.</p>
+      <span class="tag">ai · vision</span>
+      <h3><span class="en">Smart library</span><span class="tr">Akıllı kütüphane</span></h3>
+      <p class="en">An image-processing pipeline that reads desk occupancy (occupied · away · free) from camera footage, and the e-library screens built on top of it.</p>
+      <p class="tr">Kamera görüntüsünden çalışma masalarının doluluğunu (dolu · ara · boş) çıkaran görüntü işleme hattı ve buna bağlı e-kütüphane ekranları.</p>
+      <div class="stack"><span>YOLO</span><span>Python</span><span>Next.js</span></div>
+    </div>
+    <div class="cell st tilt">
+      <span class="tag">web · enterprise</span>
+      <h3><span class="en">Real-time warehouse and inventory platform</span><span class="tr">Gerçek zamanlı depo ve envanter yönetim platformu</span></h3>
+      <p class="en">I developed <b>BirStok</b>, a real-time digital inventory and warehouse tracking platform through which I digitised industrial slab and product tracking. With this system every warehouse process for industrial products is managed digitally and in real time.</p>
+      <p class="tr">Endüstriyel plaka ve ürün takip süreçlerini dijitalleştirdiğim <b>BirStok</b> adlı gerçek zamanlı dijital envanter ve depo takip platformunu geliştirdim. Bu sistem ile endüstriyel ürünlerin tüm depo süreçleri dijital ortamda gerçek zamanlı olarak yönetiliyor.</p>
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>SQL</span></div>
     </div>
     <div class="cell st tilt">
@@ -933,10 +940,10 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>SQL</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">web · enterprise</span>
-      <h3><span class="en">Real-time warehouse and inventory platform</span><span class="tr">Gerçek zamanlı depo ve envanter yönetim platformu</span></h3>
-      <p class="en">I developed <b>BirStok</b>, a real-time digital inventory and warehouse tracking platform through which I digitised industrial slab and product tracking. With this system every warehouse process for industrial products is managed digitally and in real time.</p>
-      <p class="tr">Endüstriyel plaka ve ürün takip süreçlerini dijitalleştirdiğim <b>BirStok</b> adlı gerçek zamanlı dijital envanter ve depo takip platformunu geliştirdim. Bu sistem ile endüstriyel ürünlerin tüm depo süreçleri dijital ortamda gerçek zamanlı olarak yönetiliyor.</p>
+      <span class="tag">web · operations</span>
+      <h3><span class="en">Municipal sports &amp; facility systems</span><span class="tr">Belediye spor ve tesis sistemleri</span></h3>
+      <p class="en">I develop the systems that manage membership, booking and day-to-day operations at public sports facilities.</p>
+      <p class="tr">Kamu spor tesislerinin üyelik, rezervasyon ve günlük işleyiş süreçlerini yöneten sistemler geliştiriyorum.</p>
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>SQL</span></div>
     </div>
     <div class="cell st tilt">
@@ -947,18 +954,11 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <div class="stack"><span>Next.js</span><span>Node.js</span><span>REST</span></div>
     </div>
     <div class="cell st tilt">
-      <span class="tag">ai · vision</span>
-      <h3><span class="en">Smart library</span><span class="tr">Akıllı kütüphane</span></h3>
-      <p class="en">An image-processing pipeline that reads desk occupancy (occupied · away · free) from camera footage, and the e-library screens built on top of it.</p>
-      <p class="tr">Kamera görüntüsünden çalışma masalarının doluluğunu (dolu · ara · boş) çıkaran görüntü işleme hattı ve buna bağlı e-kütüphane ekranları.</p>
-      <div class="stack"><span>YOLO</span><span>Python</span><span>Next.js</span></div>
-    </div>
-    <div class="cell st tilt">
-      <span class="tag">web · public sector</span>
-      <h3><span class="en">Municipal ERP modules</span><span class="tr">Belediye ERP modülleri</span></h3>
-      <p class="en">Council Affairs, Municipal Council, Executive Committee, Archive, Legal and Private Office modules on Biryerden, with clause-by-clause feature parity against the relevant legislation and the previous system.</p>
-      <p class="tr">Biryerden'de Yazı İşleri, Meclis, Encümen, Arşiv, Hukuk ve Özel Kalem modülleri; ilgili mevzuat ve önceki sistemle madde madde işlev eşitliği (parite) çalışması.</p>
-      <div class="stack"><span>Node.js</span><span>React</span><span>PostgreSQL</span></div>
+      <span class="tag">flutter · mobile</span>
+      <h3><span class="en">Municipal mobile applications</span><span class="tr">Belediye mobil uygulamaları</span></h3>
+      <p class="en">I develop iOS and Android applications for city services with Flutter. The applications run on APIs written in Node.js.</p>
+      <p class="tr">Şehir hizmetleri için Flutter ile iOS ve Android uygulamaları geliştiriyorum. Uygulamalar Node.js ile yazılmış API'ler üzerinden çalışıyor.</p>
+      <div class="stack"><span>Flutter</span><span>Dart</span><span>Node.js</span><span>REST</span></div>
     </div>
   </div>
 
@@ -1240,23 +1240,43 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
   <div class="stackwrap">
     <div class="srow st">
       <div class="lbl"><span class="en">Languages</span><span class="tr">Diller</span></div>
-      <div class="chips"><span>Python</span><span>Dart</span><span>C / C++</span><span>SQL</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
+      <div class="chips"><span>Python</span><span>JavaScript</span><span>TypeScript</span><span>PHP</span><span>Dart</span><span>SQL</span><span>C / C++</span><span>HTML</span><span>CSS</span><span>Bash</span></div>
     </div>
     <div class="srow st">
-      <div class="lbl"><span class="en">AI &amp; Data</span><span class="tr">Yapay Zekâ</span></div>
-      <div class="chips"><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>Pandas</span><span>NumPy</span></div>
+      <div class="lbl"><span class="en">AI &amp; Data</span><span class="tr">Yapay Zekâ &amp; Veri</span></div>
+      <div class="chips"><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>Prophet</span><span>SHAP</span><span>Pandas</span><span>NumPy</span></div>
     </div>
     <div class="srow st">
-      <div class="lbl"><span class="en">Vision &amp; NLP</span><span class="tr">Görü &amp; NLP</span></div>
-      <div class="chips"><span>OpenCV</span><span>YOLO</span><span>OCR</span><span class="en">Object Detection</span><span class="tr">Nesne Tespiti</span><span class="en">Chatbots</span><span class="tr">Chatbot</span><span class="en">Text Classification</span><span class="tr">Metin Sınıflandırma</span></div>
+      <div class="lbl"><span class="en">Vision</span><span class="tr">Görüntü</span></div>
+      <div class="chips"><span>OpenCV</span><span>YOLO</span><span>Vision Transformer</span><span>OCR</span><span class="en">Object Detection</span><span class="tr">Nesne Tespiti</span><span class="en">Image Forgery Localization</span><span class="tr">Görüntü Sahteciliği Tespiti</span></div>
     </div>
     <div class="srow st">
-      <div class="lbl"><span class="en">Web &amp; Mobile</span><span class="tr">Web &amp; Mobil</span></div>
-      <div class="chips"><span>Next.js</span><span>Node.js</span><span>Flask</span><span>REST API</span><span>Flutter</span></div>
+      <div class="lbl"><span class="en">NLP &amp; LLM</span><span class="tr">NLP &amp; LLM</span></div>
+      <div class="chips"><span>Claude API</span><span>Gemini API</span><span>Sentence-Transformers</span><span class="en">Chatbots</span><span class="tr">Chatbot</span><span class="en">Text Classification</span><span class="tr">Metin Sınıflandırma</span></div>
+    </div>
+    <div class="srow st">
+      <div class="lbl"><span class="en">Frontend</span><span class="tr">Ön Yüz</span></div>
+      <div class="chips"><span>Next.js</span><span>React</span><span>Tailwind CSS</span><span>MUI</span><span>TanStack Query</span><span>Leaflet / MapLibre</span><span>Bootstrap</span><span>Vite</span></div>
+    </div>
+    <div class="srow st">
+      <div class="lbl"><span class="en">Backend</span><span class="tr">Arka Uç</span></div>
+      <div class="chips"><span>Node.js</span><span>Express</span><span>NestJS</span><span>FastAPI</span><span>Flask</span><span>Laravel</span><span>REST API</span><span>Socket.IO</span></div>
+    </div>
+    <div class="srow st">
+      <div class="lbl"><span class="en">Databases</span><span class="tr">Veri Tabanı</span></div>
+      <div class="chips"><span>PostgreSQL</span><span>pgvector</span><span>MySQL</span><span>Redis</span><span>Prisma</span><span>Sequelize</span><span>SQLAlchemy</span></div>
     </div>
     <div class="srow st">
       <div class="lbl"><span class="en">Infra &amp; MLOps</span><span class="tr">Altyapı &amp; MLOps</span></div>
-      <div class="chips"><span>Docker</span><span>NVIDIA Triton</span><span>ONNX</span><span>Microsoft Azure</span><span>RabbitMQ</span><span>Git</span></div>
+      <div class="chips"><span>Docker</span><span>Docker Compose</span><span>NVIDIA Triton</span><span>ONNX Runtime</span><span>Microsoft Azure</span><span>AWS S3</span><span>Google Cloud Storage</span><span>RabbitMQ</span><span>BullMQ</span><span>GitHub Actions</span><span>Git</span><span>Linux</span></div>
+    </div>
+    <div class="srow st">
+      <div class="lbl"><span class="en">Testing</span><span class="tr">Test</span></div>
+      <div class="chips"><span>Vitest</span><span>Jest</span><span>Pytest</span></div>
+    </div>
+    <div class="srow st">
+      <div class="lbl"><span class="en">Mobile</span><span class="tr">Mobil</span></div>
+      <div class="chips"><span>Flutter</span><span>Dart</span></div>
     </div>
     <div class="srow st">
       <div class="lbl"><span class="en">Languages spoken</span><span class="tr">Yabancı dil</span></div>
@@ -1277,8 +1297,8 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
       <div>
         <h3><span class="en">Team Lead — AI &amp; Full Stack</span><span class="tr">Ekip Lideri — Yapay Zekâ &amp; Full Stack</span></h3>
         <div class="org">Birsav Bilişim · Bursa</div>
-        <p class="en">I am a <b>team lead</b> in the company. I run project planning, task allocation, technical decisions, client presentations and the <b>AI processes</b>: OCR and image processing, chatbot systems, anomaly detection. On <b>private-sector and public-sector projects</b> I work as a full stack developer, building them <b>from start to finish</b>. With Node.js, Next.js and Flutter I have worked on municipal mobile applications, sports and facility systems, human resources platforms, and community and entrepreneurship sites. I also take an active part in smart-municipality systems.</p>
-        <p class="tr">Şirkette <b>ekip lideriyim</b>. Proje planlaması, iş bölümü, teknik kararlar, müşteri sunumları ve <b>yapay zekâ süreçlerini</b> yürütüyorum: OCR ve görüntü işleme, chatbot sistemleri, anomali tespiti. <b>Özel sektör ve kamu projelerinde</b> ise full stack geliştirici olarak <b>baştan sona</b> geliştirmeler yapıyorum. Node.js, Next.js ve Flutter ile belediye mobil uygulamaları, spor ve tesis sistemleri, insan kaynakları platformları, topluluk ve girişim siteleri üzerine çalışmalarım bulunuyor. Akıllı belediyecilik sistemlerinde de aktif olarak görev alıyorum.</p>
+        <p class="en">I am a <b>team lead</b> in the company. I run project planning, task allocation, technical decisions, client presentations and the <b>AI processes</b>: OCR and image processing, chatbot systems, anomaly detection. On <b>private-sector and public-sector projects</b> I work as a full stack developer, building them <b>from start to finish</b>. With Next.js, React and Node.js I have worked on municipal ERP modules, human resources platforms, sports and facility systems, and community and entrepreneurship sites. I also take an active part in smart-municipality systems.</p>
+        <p class="tr">Şirkette <b>ekip lideriyim</b>. Proje planlaması, iş bölümü, teknik kararlar, müşteri sunumları ve <b>yapay zekâ süreçlerini</b> yürütüyorum: OCR ve görüntü işleme, chatbot sistemleri, anomali tespiti. <b>Özel sektör ve kamu projelerinde</b> ise full stack geliştirici olarak <b>baştan sona</b> geliştirmeler yapıyorum. Next.js, React ve Node.js ile belediye ERP modülleri, insan kaynakları platformları, spor ve tesis sistemleri, topluluk ve girişim siteleri üzerine çalışmalarım bulunuyor. Akıllı belediyecilik sistemlerinde de aktif olarak görev alıyorum.</p>
       </div>
     </div>
     <div class="ev st">
