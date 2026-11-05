@@ -754,15 +754,19 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
             <path d="M84 108 L74 134 M106 108 L116 132" stroke="var(--muted)" stroke-opacity=".72" stroke-width="6" stroke-linecap="round"/>
             <rect x="84" y="138" width="9" height="34" rx="4"/>
             <rect x="97" y="138" width="9" height="34" rx="4"/>
-            <!-- araç -->
-            <path d="M258 180 L270 162 H306 L320 180 Z"/>
-            <rect x="236" y="178" width="102" height="24" rx="8"/>
-            <path d="M274 166 H288 V178 H266 Z M292 166 H304 L314 178 H292 Z" fill="var(--surf)" fill-opacity=".8"/>
-            <circle cx="259" cy="204" r="8.5" fill="var(--txt)" fill-opacity=".6"/>
-            <circle cx="315" cy="204" r="8.5" fill="var(--txt)" fill-opacity=".6"/>
+            <!-- araç: ileri geri sürer; vehicle kutusu aynı hareketle onu izler -->
+            <g><animateTransform attributeName="transform" type="translate" values="-34 0;30 0;-34 0" keyTimes="0;0.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="9s" repeatCount="indefinite"/>
+              <path d="M258 180 L270 162 H306 L320 180 Z"/>
+              <rect x="236" y="178" width="102" height="24" rx="8"/>
+              <path d="M274 166 H288 V178 H266 Z M292 166 H304 L314 178 H292 Z" fill="var(--surf)" fill-opacity=".8"/>
+              <circle cx="259" cy="204" r="8.5" fill="var(--txt)" fill-opacity=".6"/>
+              <circle cx="315" cy="204" r="8.5" fill="var(--txt)" fill-opacity=".6"/>
+            </g>
             <!-- kedi (oturan) -->
             <g transform="translate(366 86)" fill="var(--txt)" fill-opacity=".72">
-              <path class="kdk" d="M30 44 C40 44 42 34 36 30" fill="none" stroke="var(--txt)" stroke-opacity=".72" stroke-width="3" stroke-linecap="round"/>
+              <path d="M30 44 C40 44 42 34 36 30" fill="none" stroke="var(--txt)" stroke-opacity=".72" stroke-width="3" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" values="0 30 44;-28 30 44;6 30 44;-20 30 44;0 30 44" dur="2.4s" repeatCount="indefinite"/>
+              </path>
               <ellipse cx="18" cy="32" rx="12" ry="12.5"/><circle cx="18" cy="13" r="8.5"/>
               <path d="M10.5 9 L11.5 0.5 L16.5 6 Z M25.5 9 L24.5 0.5 L19.5 6 Z"/>
             </g>
@@ -797,9 +801,11 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
               <text x="185" y="35" font-family="JetBrains Mono, monospace" font-size="10" fill="#fff" stroke="none">bird 0.89</text>
             </g>
             <g class="d d2" stroke="var(--violet)">
+              <g><animateTransform attributeName="transform" type="translate" values="-34 0;30 0;-34 0" keyTimes="0;0.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="9s" repeatCount="indefinite"/>
               <rect x="228" y="146" width="118" height="72"/>
               <rect x="228" y="132" width="86" height="14" fill="var(--violet)" stroke="none"/>
               <text x="233" y="143" font-family="JetBrains Mono, monospace" font-size="10" fill="#fff" stroke="none">vehicle 0.91</text>
+              </g>
             </g>
             <g class="d d3" stroke="var(--blue)">
               <rect x="122" y="212" width="150" height="82" stroke-dasharray="6 5"/>
@@ -1411,9 +1417,7 @@ section[id],footer[id]{scroll-margin-top:1.5rem}
 /* sahnedeki kuş kanat çırpar, kedi kuyruk sallar */
 .objs .kanat{transform-box:fill-box; transform-origin:100% 100%; animation:kanat .5s ease-in-out infinite alternate}
 @keyframes kanat{from{transform:scaleY(1)} to{transform:scaleY(-.35)}}
-.objs .kdk{transform-box:fill-box; transform-origin:0 100%; animation:kdk 4s ease-in-out infinite}
-@keyframes kdk{0%,100%{transform:rotate(0)} 50%{transform:rotate(-10deg)}}
-@media (prefers-reduced-motion: reduce){ .objs .kanat,.objs .kdk{animation:none} }
+@media (prefers-reduced-motion: reduce){ .objs .kanat{animation:none} }
 @keyframes pop{0%{opacity:0} 6%{opacity:1} 78%{opacity:1} 92%{opacity:0} 100%{opacity:0}}
 /* iletişimdeki küçük kedi silüeti */
 .kedi{display:flex; justify-content:flex-end; margin-top:2rem; opacity:.85}
